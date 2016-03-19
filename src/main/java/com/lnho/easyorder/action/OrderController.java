@@ -11,12 +11,14 @@ import com.lnho.easyorder.bean.Order;
 import com.lnho.easyorder.commons.web.Response;
 import com.lnho.easyorder.param.LogParam;
 import com.lnho.easyorder.service.OrderService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -43,7 +45,16 @@ public class OrderController {
 
     @RequestMapping("save")
     @ResponseBody
-    public Response<Boolean> save(Order order, Model model) {
+    public Response<Boolean> save(Order order) {
+        if (StringUtils.isBlank(order.getClientName()) || StringUtils.isBlank(order.getClientPhone())) {
+            return Response.getFailedResponse("请填写完整");
+        }
+        if (order.getClientAddress() == null) {
+            order.setClientAddress("");
+        }
+        if (order.getOrderTime() == null) {
+            order.setOrderTime(new Date());
+        }
         boolean result;
         if (order.getId() == null) {
             result = orderService.createOrder(order);

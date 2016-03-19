@@ -45,9 +45,9 @@
                                placeholder="电话" autocomplete="off" value="<#if data??>${data.clientPhone}</#if>">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">时间</label>
-                        <input type="text" class="form-control" name="orderTime"
-                               placeholder="时间" autocomplete="off" value="<#if data??>${data.orderTime}</#if>">
+                        <label for="exampleInputPassword1">创建日期</label>
+                        <input type="date" class="form-control" name="orderTime" placeholder="时间"
+                               value="<#if data??>${data.orderTime?date}</#if>">
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -64,10 +64,12 @@
 <@inc.footer nav>
 <script>
     $("#submit").click(function () {
-        $.post('${ctx}order/save.htm', $("#edit-form").serialize(), function (data, status) {
-            if (data.data == true) {
+        $.post('${ctx}order/save.htm', $("#edit-form").serialize(), function (res, status) {
+            if (res.result == "success") {
                 alert("保存成功");
                 location = "/order.htm";
+            } else if (res.messages != "") {
+                alert(res.messages[0]);
             } else {
                 alert("保存失败");
             }

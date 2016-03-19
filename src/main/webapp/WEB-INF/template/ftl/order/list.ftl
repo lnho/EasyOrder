@@ -24,7 +24,7 @@
             <th>客户</th>
             <th>地址</th>
             <th>电话</th>
-            <th>时间</th>
+            <th>创建日期</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -35,7 +35,7 @@
                 <td>${item.clientName}</td>
                 <td>${item.clientAddress}</td>
                 <td>${item.clientPhone}</td>
-                <td>${item.orderTime}</td>
+                <td>${item.orderTime?date}</td>
                 <td>
                     <a class="btn btn-primary" href="${ctx}order/detail.htm?orderId=${item.id}">结算单明细</a>
                     <a class="btn btn-primary" href="${ctx}order/edit.htm?id=${item.id}">编辑</a>
