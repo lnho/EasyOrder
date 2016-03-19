@@ -19,7 +19,29 @@ public class OrderDetailService extends BaseService<OrderDetail> {
     public List<OrderDetail> list(Integer orderId) {
         Query query = Query.build(OrderDetail.class);
         query.addEq("orderId",orderId);
-        List<OrderDetail> list=this.findByQuery(query);
-        return list;
+        return this.findByQuery(query);
+    }
+
+    public boolean deleteOrderDetail(Integer id) {
+        OrderDetail orderDetail = get(id);
+        if (orderDetail == null) {
+            return false;
+        }
+        delete(id);
+        return true;
+    }
+
+    public boolean createOrderDetail(OrderDetail orderDetail) {
+        insert(orderDetail);
+        return true;
+    }
+
+    public boolean updateOrderDetail(OrderDetail orderDetail) {
+        OrderDetail orderDetail1 = get(orderDetail.getId());
+        if (orderDetail1 == null) {
+            return false;
+        }
+        update(orderDetail);
+        return true;
     }
 }

@@ -11,7 +11,7 @@
     <#--<small>Current version 2.3.0</small>-->
     </h1>
     <div class="pull-right">
-        <button type="submit" class="btn btn-primary" id="add">添加产品</button>
+        <button type="button" class="btn btn-primary" id="add">添加产品</button>
     </div>
 </div>
 

@@ -24,6 +24,7 @@ import java.util.List;
 public class OrderController {
     @Autowired
     private OrderService orderService;
+
     @RequestMapping()
     public String list(LogParam pageQueryParam, Model model) {
         List<Order> auctionVoList = orderService.list();

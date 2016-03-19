@@ -6,14 +6,13 @@
 <@inc.body>
 <!-- Content Header (Page header) -->
 <div class="content-header">
-    <h1>
+    <h1 class="pull-left">
         结算单明细
     <#--<small>Current version 2.3.0</small>-->
     </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Documentation</li>
-    </ol>
+    <div class="pull-right">
+        <button type="button" class="btn btn-primary" id="add">添加结算单明细</button>
+    </div>
 </div>
 
 <!-- Main content -->
@@ -44,8 +43,8 @@
                 <td>${item.money}</td>
                 <td>${item.remark}</td>
                 <td>
-                    <a class="btn btn-primary" href="${ctx}order/detail/edit.htm?orderId=${item.id}">编辑</a>
-                    <a class="btn btn-primary" href="${ctx}order/detail/del.htm?orderId=${item.id}">删除</a>
+                    <a class="btn btn-primary" href="${ctx}order/detail/edit.htm?id=${item.id}">编辑</a>
+                    <a class="btn btn-primary" onclick="del(${item.id})">删除</a>
                 </td>
             </tr>
             </#list>
@@ -54,4 +53,19 @@
 </div>
 </@inc.body>
 <@inc.footer nav>
+<script>
+    function del(id) {
+        $.post('${ctx}order/detail/del.htm', {id: id}, function (data, status) {
+            if (data.data == true) {
+                alert("删除成功");
+                location = "/order/detail.htm?orderId=${orderId}";
+            } else {
+                alert("删除失败");
+            }
+        });
+    }
+    $("#add").click(function () {
+        location = "${ctx}order/detail/edit.htm?orderId=${orderId}";
+    });
+</script>
 </@inc.footer>
