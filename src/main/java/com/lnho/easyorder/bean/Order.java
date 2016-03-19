@@ -4,21 +4,26 @@ import com.lnho.easyorder.commons.mybatis.annotation.Column;
 import com.lnho.easyorder.commons.mybatis.annotation.Id;
 import com.lnho.easyorder.commons.mybatis.annotation.Table;
 
+import java.util.Date;
+
 /**
  * com.lnho.easyorder.bean
  *
  * @author lnho
  * @date 14-7-23 上午10:28
  */
-@Table("order")
+@Table("tbl_order")
 public class Order {
     @Id("id")
     private Integer id;
-
-    @Column("user_id")
-    private Integer userId;
-    @Column("addtime")
-    private Long addtime;
+    @Column("client_name")
+    private String clientName;
+    @Column("client_address")
+    private String clientAddress;
+    @Column("client_phone")
+    private String clientPhone;
+    @Column("order_time")
+    private Date orderTime;
 
     public Integer getId() {
         return id;
@@ -28,19 +33,35 @@ public class Order {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getClientName() {
+        return clientName;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
-    public Long getAddtime() {
-        return addtime;
+    public String getClientAddress() {
+        return clientAddress;
     }
 
-    public void setAddtime(Long addtime) {
-        this.addtime = addtime;
+    public void setClientAddress(String clientAddress) {
+        this.clientAddress = clientAddress;
+    }
+
+    public String getClientPhone() {
+        return clientPhone;
+    }
+
+    public void setClientPhone(String clientPhone) {
+        this.clientPhone = clientPhone;
+    }
+
+    public Date getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(Date orderTime) {
+        this.orderTime = orderTime;
     }
 }

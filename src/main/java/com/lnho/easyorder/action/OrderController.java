@@ -37,7 +37,7 @@ public class OrderController {
             Order order = orderService.get(id);
             model.addAttribute("data", order);
         }
-        return "product/edit";
+        return "order/edit";
     }
 
     @RequestMapping("save")

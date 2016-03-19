@@ -10,7 +10,7 @@ import com.lnho.easyorder.commons.mybatis.annotation.Table;
  * @author lnho
  * @date 14-7-23 上午10:28
  */
-@Table("product")
+@Table("tbl_product")
 public class Product {
     @Id("id")
     private Integer id;

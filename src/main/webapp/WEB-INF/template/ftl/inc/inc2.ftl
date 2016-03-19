@@ -64,7 +64,7 @@
             <ul class="nav sidebar-menu">
                 <li class="header">功能</li>
                 <li class=""><a href="/product.htm"><i class="fa fa-circle-o"></i> 产品管理</a></li>
-                <li class=""><a href="/order/detail.htm?orderId=1"><i class="fa fa-circle-o"></i> 销售管理</a></li>
+                <li class=""><a href="/order.htm"><i class="fa fa-circle-o"></i> 结算单</a></li>
                 <#--<li class="treeview" id="scrollspy-components">-->
                     <#--<a href="javascript::;"><i class="fa fa-circle-o"></i> 销售管理</a>-->
                     <#--<ul class="nav treeview-menu">-->

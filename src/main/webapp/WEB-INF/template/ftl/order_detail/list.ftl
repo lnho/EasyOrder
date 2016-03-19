@@ -7,7 +7,7 @@
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <h1>
-        订单明细
+        结算单明细
     <#--<small>Current version 2.3.0</small>-->
     </h1>
     <ol class="breadcrumb">

@@ -11,7 +11,7 @@ import com.lnho.easyorder.commons.mybatis.annotation.UnColumn;
  * @author lnho
  * @date 14-7-23 上午10:28
  */
-@Table("log")
+@Table("tbl_log")
 public class Log {
     @Id("id")
     private Integer id;
