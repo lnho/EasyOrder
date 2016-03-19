@@ -10,21 +10,11 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/fed/css/font-awesome.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/fed/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/fed/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="/fed/css/style.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
     <#nested>
 </head>
 </#macro>
@@ -88,7 +78,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.3.1
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+        <strong>Copyright &copy; 2014-2016 EasyOrder.</strong> All rights
         reserved.
     </footer>
 

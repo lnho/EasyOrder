@@ -5,7 +5,7 @@
 </@inc.header>
 <@inc.body>
 <script>
-    location="/order/detail.htm?orderId=1"
+    location="/order.htm"
 </script>
 <div class="container">
     <div class="row">

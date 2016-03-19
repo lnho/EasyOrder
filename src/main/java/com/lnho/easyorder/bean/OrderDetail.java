@@ -32,6 +32,8 @@ public class OrderDetail {
     private Double money;
     @Column("remark")
     private String remark;
+    @Column("type")
+    private Integer type;
 
     public Integer getId() {
         return id;
@@ -111,5 +113,13 @@ public class OrderDetail {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

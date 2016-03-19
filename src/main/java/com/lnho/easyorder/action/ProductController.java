@@ -10,6 +10,7 @@ package com.lnho.easyorder.action;
 import com.lnho.easyorder.bean.Product;
 import com.lnho.easyorder.commons.web.Response;
 import com.lnho.easyorder.service.ProductService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,12 +43,24 @@ public class ProductController {
 
     @RequestMapping("save")
     @ResponseBody
-    public Response<Boolean> save(Product product, Model model) {
+    public Response<Boolean> save(Product product) {
+        if (product.getType() == null || StringUtils.isBlank(product.getName()) || product.getSpec1() == null ||
+                product.getPrice() == null || (product.getType() == 1 && product.getSpec2() == null)) {
+            return Response.getFailedResponse("请全部填写后提交");
+        }
+        if (product.getType() == 2) {
+            product.setSpec2(0.0);
+        }
         boolean result;
-        if (product.getId() == null) {
-            result = productService.createProduct(product);
-        } else {
-            result = productService.updateProduct(product);
+        try {
+            if (product.getId() == null) {
+                result = productService.createProduct(product);
+            } else {
+                result = productService.updateProduct(product);
+            }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return Response.getFailedResponse("error");
         }
         return Response.getSuccessResponse(result);
     }
@@ -55,6 +68,9 @@ public class ProductController {
     @RequestMapping("del")
     @ResponseBody
     public Response<Boolean> del(Integer id) {
+        if (id == null) {
+            return Response.getSuccessResponse(false);
+        }
         boolean result = productService.deleteProduct(id);
         return Response.getSuccessResponse(result);
     }

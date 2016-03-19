@@ -32,7 +32,7 @@
             <tr>
                 <td>${item.name}</td>
                 <td>${item.spec1}</td>
-                <td>${item.spec2}</td>
+                <td><#if item.type==1>${item.spec2}</#if></td>
                 <td>${item.price}</td>
                 <td>
                     <a class="btn btn-primary" href="${ctx}product/edit.htm?id=${item.id}">修改</a>

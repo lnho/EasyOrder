@@ -12,6 +12,7 @@
     </h1>
     <div class="pull-right">
         <button type="button" class="btn btn-primary" id="add">添加结算单明细</button>
+        <button type="button" class="btn btn-primary" id="export">导出Excel文档</button>
     </div>
 </div>
 
@@ -66,6 +67,9 @@
     }
     $("#add").click(function () {
         location = "${ctx}order/detail/edit.htm?orderId=${orderId}";
+    });
+    $("#export").click(function () {
+        alert("该功能暂不可用");
     });
 </script>
 </@inc.footer>

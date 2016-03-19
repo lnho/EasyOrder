@@ -8,8 +8,10 @@ package com.lnho.easyorder.action;
  */
 
 import com.lnho.easyorder.bean.OrderDetail;
+import com.lnho.easyorder.bean.Product;
 import com.lnho.easyorder.commons.web.Response;
 import com.lnho.easyorder.service.OrderDetailService;
+import com.lnho.easyorder.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,12 +25,14 @@ import java.util.List;
 public class OrderDetailController {
     @Autowired
     private OrderDetailService orderDetailService;
+    @Autowired
+    private ProductService productService;
 
     @RequestMapping()
     public String list(Integer orderId, Model model) {
         List<OrderDetail> list = orderDetailService.list(orderId);
         model.addAttribute("data", list);
-        model.addAttribute("orderId",orderId);
+        model.addAttribute("orderId", orderId);
         return "order_detail/list";
     }
 
@@ -41,12 +45,39 @@ public class OrderDetailController {
         } else {
             model.addAttribute("orderId", orderId);
         }
+        List<Product> products = productService.list();
+        model.addAttribute("products", products);
         return "order_detail/edit";
     }
 
     @RequestMapping("save")
     @ResponseBody
     public Response<Boolean> save(OrderDetail orderDetail, Model model) {
+        if (orderDetail.getRemark() == null) {
+            orderDetail.setRemark("");
+        }
+        if (orderDetail.getSpec1() == null || orderDetail.getType() == null || orderDetail.getPrice() == null) {
+            return Response.getFailedResponse("数据不能为空");
+        }
+        Double money = 0.0;
+        if (orderDetail.getType() == 1) {
+            if (orderDetail.getSpec2() == null || orderDetail.getArea() == null) {
+                return Response.getFailedResponse("数据不能为空");
+            } else {
+                money = orderDetail.getSpec1() * orderDetail.getSpec2() * orderDetail.getPrice() * orderDetail.getArea();
+                orderDetail.setNum(0);
+            }
+        }
+        if (orderDetail.getType() == 2) {
+            if (orderDetail.getNum() == null) {
+                return Response.getFailedResponse("数据不能为空");
+            } else {
+                money = orderDetail.getSpec1() * orderDetail.getPrice() * orderDetail.getNum();
+                orderDetail.setSpec2(0.0);
+                orderDetail.setArea(0.0);
+            }
+        }
+        orderDetail.setMoney(money);
         boolean result;
         if (orderDetail.getId() == null) {
             result = orderDetailService.createOrderDetail(orderDetail);
