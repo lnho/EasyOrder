@@ -24,9 +24,9 @@
             <th>名称</th>
             <th>长或高(米)</th>
             <th>宽(米)</th>
+            <th>单价(每平方米或每米)</th>
             <th>数量(条片)</th>
             <th>面积(平方米)</th>
-            <th>单价(每平方米或每米)</th>
             <th>金额</th>
             <th>备注</th>
             <th>操作</th>
@@ -37,10 +37,10 @@
             <tr>
                 <td>${item.name}</td>
                 <td>${item.spec1}</td>
-                <td>${item.spec2}</td>
-                <td>${item.num}</td>
-                <td>${item.area}</td>
+                <td><#if item.type==1>${item.spec2}</#if></td>
                 <td>${item.price}</td>
+                <td><#if item.type==2>${item.num}</#if></td>
+                <td><#if item.type==1>${item.area}</#if></td>
                 <td>${item.money}</td>
                 <td>${item.remark}</td>
                 <td>
