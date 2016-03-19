@@ -7,12 +7,12 @@
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <h1>
-        订单明细
+        结算单管理
     <#--<small>Current version 2.3.0</small>-->
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Documentation</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li class="active">结算单管理</li>
     </ol>
 </div>
 

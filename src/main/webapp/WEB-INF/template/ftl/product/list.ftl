@@ -6,14 +6,13 @@
 <@inc.body>
 <!-- Content Header (Page header) -->
 <div class="content-header">
-    <h1>
-        订单明细
+    <h1 class="pull-left">
+        产品列表
     <#--<small>Current version 2.3.0</small>-->
     </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Documentation</li>
-    </ol>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-primary" id="add">添加产品</button>
+    </div>
 </div>
 
 <!-- Main content -->
@@ -24,11 +23,7 @@
             <th>名称</th>
             <th>长或高(米)</th>
             <th>宽(米)</th>
-            <th>数量(条片)</th>
-            <th>面积(平方米)</th>
             <th>单价(每平方米或每米)</th>
-            <th>金额</th>
-            <th>备注</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -38,14 +33,10 @@
                 <td>${item.name}</td>
                 <td>${item.spec1}</td>
                 <td>${item.spec2}</td>
-                <td>${item.num}</td>
-                <td>${item.area}</td>
                 <td>${item.price}</td>
-                <td>${item.money}</td>
-                <td>${item.remark}</td>
                 <td>
-                    <a class="btn btn-primary" href="${ctx}order/detail/edit.htm?orderId=${item.id}">编辑</a>
-                    <a class="btn btn-primary" href="${ctx}order/detail/del.htm?orderId=${item.id}">删除</a>
+                    <a class="btn btn-primary" href="${ctx}product/edit.htm?id=${item.id}">修改</a>
+                    <a class="btn btn-primary" onclick="del(${item.id})">删除</a>
                 </td>
             </tr>
             </#list>
@@ -54,4 +45,19 @@
 </div>
 </@inc.body>
 <@inc.footer nav>
+<script>
+    function del(id) {
+        $.post('${ctx}product/del.htm', {id: id}, function (data, status) {
+            if (data.data == true) {
+                alert("删除成功");
+                location = "/product.htm";
+            } else {
+                alert("删除失败");
+            }
+        });
+    }
+    $("#add").click(function () {
+        location = "${ctx}product/edit.htm";
+    });
+</script>
 </@inc.footer>

@@ -28,4 +28,18 @@ public class OrderDetailController {
         model.addAttribute("data", list);
         return "order/detail";
     }
+
+    @RequestMapping("edit")
+    public String edit(Integer orderId, Model model) {
+        List<OrderDetail> list = orderDetailService.list(orderId);
+        model.addAttribute("data", list);
+        return "order/edit";
+    }
+
+    @RequestMapping("del")
+    public String del(Integer orderId, Model model) {
+        List<OrderDetail> list = orderDetailService.list(orderId);
+        model.addAttribute("data", list);
+        return "order/detail";
+    }
 }

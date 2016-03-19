@@ -37,9 +37,9 @@
         <!-- Logo -->
         <a href="../index2.html" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>LT</span>
+            <span class="logo-mini"><b>E</b>Order</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Admin</b>LTE</span>
+            <span class="logo-lg"><b>Easy</b>Order</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -50,8 +50,7 @@
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <li><a href="http://almsaeedstudio.com">Almsaeed Studio</a></li>
-                    <li><a href="http://almsaeedstudio.com/premium">Premium Templates</a></li>
+                    <li><a href="#">退出</a></li>
                 </ul>
             </div>
         </nav>
@@ -64,7 +63,8 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="nav sidebar-menu">
                 <li class="header">功能</li>
-                <li class="active"><a href="#introduction"><i class="fa fa-circle-o"></i> 销售管理</a></li>
+                <li class=""><a href="/product.htm"><i class="fa fa-circle-o"></i> 产品管理</a></li>
+                <li class=""><a href="/order/detail.htm?orderId=1"><i class="fa fa-circle-o"></i> 销售管理</a></li>
                 <#--<li class="treeview" id="scrollspy-components">-->
                     <#--<a href="javascript::;"><i class="fa fa-circle-o"></i> 销售管理</a>-->
                     <#--<ul class="nav treeview-menu">-->
@@ -79,21 +79,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <h1>
-                AdminLTE Documentation
-                <small>Current version 2.3.0</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Documentation</li>
-            </ol>
-        </div>
-
-        <!-- Main content -->
-        <div class="content body">
             <#nested>
-        </div>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
