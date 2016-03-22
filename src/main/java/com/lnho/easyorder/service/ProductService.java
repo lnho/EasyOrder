@@ -1,6 +1,7 @@
 package com.lnho.easyorder.service;
 
 import com.lnho.easyorder.bean.Product;
+import com.lnho.easyorder.commons.mybatis.bean.Query;
 import com.lnho.easyorder.commons.mybatis.service.BaseService;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,10 @@ import java.util.List;
 @Service
 public class ProductService extends BaseService<Product> {
 
-    public List<Product> list() {
-        return this.findAll();
+    public List<Product> list(Integer type) {
+        Query query = Query.build(Product.class);
+        query.addEq("type",type);
+        return this.findByQuery(query);
     }
 
     public boolean deleteProduct(Integer id) {

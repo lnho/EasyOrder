@@ -41,11 +41,11 @@ public class OrderDetailController {
         if (id != null) {
             OrderDetail orderDetail = orderDetailService.get(id);
             model.addAttribute("data", orderDetail);
-            model.addAttribute("orderId", orderDetail.getOrderId());
+            model.addAttribute("orderId", orderDetail.getProjectId());
         } else {
             model.addAttribute("orderId", orderId);
         }
-        List<Product> products = productService.list();
+        List<Product> products = productService.list(1);
         model.addAttribute("products", products);
         return "order_detail/edit";
     }

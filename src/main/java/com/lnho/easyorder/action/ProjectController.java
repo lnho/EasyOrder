@@ -7,9 +7,9 @@ package com.lnho.easyorder.action;
  * @date 14-7-23 上午10:34
  */
 
-import com.lnho.easyorder.bean.Product;
+import com.lnho.easyorder.bean.Project;
 import com.lnho.easyorder.commons.web.Response;
-import com.lnho.easyorder.service.ProductService;
+import com.lnho.easyorder.service.ProjectService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,50 +20,50 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/product")
-public class ProductController {
+@RequestMapping("/project")
+public class ProjectController {
     @Autowired
-    private ProductService productService;
+    private ProjectService projectService;
 
     @RequestMapping()
-    public String list(Integer type, Model model) {
-        List<Product> list = productService.list(type);
+    public String list(Integer orderId, Model model) {
+        List<Project> list = projectService.list(orderId);
         model.addAttribute("data", list);
-        model.addAttribute("type", type);
-        return "product/list";
+        model.addAttribute("orderId", orderId);
+        return "project/list";
     }
 
     @RequestMapping("add")
-    public String add(Integer type, Model model) {
-        if (type == null) {
+    public String add(Integer orderId, Model model) {
+        if (orderId == null) {
             return "404";
         }
-        model.addAttribute("type", type);
-        return "product/edit";
+        model.addAttribute("orderId", orderId);
+        return "project/edit";
     }
 
     @RequestMapping("edit")
     public String edit(Integer id, Model model) {
         if (id != null) {
-            Product product = productService.get(id);
-            model.addAttribute("data", product);
-            model.addAttribute("type", product.getType());
+            Project project = projectService.get(id);
+            model.addAttribute("data", project);
+            model.addAttribute("orderId",project.getOrderId());
         }
-        return "product/edit";
+        return "project/edit";
     }
 
     @RequestMapping("save")
     @ResponseBody
-    public Response<Boolean> save(Product product) {
-        if (product.getType() == null || StringUtils.isBlank(product.getName()) || product.getPrice() == null) {
+    public Response<Boolean> save(Project project) {
+        if (StringUtils.isBlank(project.getName()) || project.getOrderId() == null) {
             return Response.getFailedResponse("请全部填写后提交");
         }
         boolean result;
         try {
-            if (product.getId() == null) {
-                result = productService.createProduct(product);
+            if (project.getId() == null) {
+                result = projectService.createProject(project);
             } else {
-                result = productService.updateProduct(product);
+                result = projectService.updateProject(project);
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
@@ -78,7 +78,7 @@ public class ProductController {
         if (id == null) {
             return Response.getSuccessResponse(false);
         }
-        boolean result = productService.deleteProduct(id);
+        boolean result = projectService.deleteProject(id);
         return Response.getSuccessResponse(result);
     }
 }

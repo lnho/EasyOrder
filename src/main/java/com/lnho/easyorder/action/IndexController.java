@@ -7,9 +7,7 @@ package com.lnho.easyorder.action;
  * @date 14-7-23 上午10:34
  */
 
-import com.lnho.easyorder.bean.User;
 import com.lnho.easyorder.commons.mybatis.util.StringUtil;
-import com.lnho.easyorder.commons.page.PageQueryParam;
 import com.lnho.easyorder.conf.Global;
 import com.lnho.easyorder.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 @RequestMapping("index")
@@ -31,19 +28,9 @@ public class IndexController {
     @Autowired
     private Global global;
 
-    @RequestMapping()
-    public String list(PageQueryParam pageQueryParam, Model model) {
-        List<User> auctionVoList = userService.queryUserListByMoneyDesc(pageQueryParam);
-        Double remainMoney = 0.0;
-        Double remainDays;
-        for (User user : auctionVoList) {
-            remainMoney += user.getMoney();
-        }
-        remainDays = remainMoney / 6 / 12;
-        model.addAttribute("data", auctionVoList);
-        model.addAttribute("remainMoney", remainMoney);
-        model.addAttribute("remainDays", remainDays);
-        return "index/list";
+    @RequestMapping
+    public String list() {
+        return "redirect:order.htm";
     }
 
     @RequestMapping(value = "login", method = RequestMethod.GET)

@@ -10,16 +10,14 @@ import com.lnho.easyorder.commons.mybatis.annotation.Table;
  * @author lnho
  * @date 14-7-23 上午10:28
  */
-@Table("tbl_product")
-public class Product {
+@Table("tbl_project")
+public class Project {
     @Id("id")
     private Integer id;
+    @Column("order_id")
+    private Integer orderId;
     @Column("name")
     private String name;
-    @Column("type")
-    private Integer type;
-    @Column("price")
-    private Double price;
 
     public Integer getId() {
         return id;
@@ -37,19 +35,11 @@ public class Product {
         this.name = name;
     }
 
-    public Integer getType() {
-        return type;
+    public Integer getOrderId() {
+        return orderId;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 }

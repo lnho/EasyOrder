@@ -28,7 +28,7 @@
             <!-- form start -->
             <form role="form" class="form-horizontal" id="edit-form">
                 <input type="hidden" name="id" value="<#if data??>${data.id}</#if>">
-                <input type="hidden" name="orderId" value="<#if orderId??>${orderId}</#if>">
+                <input type="hidden" name="projectId" value="<#if projectId??>${projectId}</#if>">
                 <input type="hidden" name="type" id="type" value="<#if data??>${data.type}</#if>">
                 <div class="box-body">
                     <div class="form-group">
@@ -115,7 +115,7 @@
         $.post('${ctx}order/detail/save.htm', $("#edit-form").serialize(), function (res, status) {
             if (res.result == "success") {
                 alert("保存成功");
-                location = "/order/detail.htm?orderId=${orderId}";
+                location = "/order/detail.htm?projectId=${projectId}";
             } else if (res.messages != "") {
                 alert(res.messages[0]);
             } else {

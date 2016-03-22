@@ -14,8 +14,8 @@ import com.lnho.easyorder.commons.mybatis.annotation.Table;
 public class OrderDetail {
     @Id("id")
     private Integer id;
-    @Column("order_id")
-    private Integer orderId;  //消费1充值2
+    @Column("project_id")
+    private Integer projectId;
     @Column("name")
     private String name;
     @Column("spec1")
@@ -43,12 +43,12 @@ public class OrderDetail {
         this.id = id;
     }
 
-    public Integer getOrderId() {
-        return orderId;
+    public Integer getProjectId() {
+        return projectId;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
     }
 
     public String getName() {

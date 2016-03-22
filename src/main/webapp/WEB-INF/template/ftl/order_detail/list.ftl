@@ -11,6 +11,7 @@
     <#--<small>Current version 2.3.0</small>-->
     </h1>
     <div class="pull-right">
+        <button type="button" class="btn btn-primary" id="project">项目管理</button>
         <button type="button" class="btn btn-primary" id="add">添加结算单明细</button>
         <button type="button" class="btn btn-primary" id="export">导出Excel文档</button>
     </div>
@@ -70,6 +71,9 @@
     });
     $("#export").click(function () {
         alert("该功能暂不可用");
+    });
+    $("#project").click(function () {
+        location = "${ctx}project.htm?orderId=${orderId}";
     });
 </script>
 </@inc.footer>

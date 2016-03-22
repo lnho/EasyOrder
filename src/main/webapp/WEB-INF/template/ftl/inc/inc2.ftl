@@ -53,14 +53,16 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="nav sidebar-menu">
                 <li class="header">功能</li>
-                <li class=""><a href="/product.htm"><i class="fa fa-circle-o"></i> 产品管理</a></li>
+                <li class="treeview active" id="scrollspy-components">
+                    <a href="javascript::;"><i class="fa fa-circle-o"></i> 产品管理</a>
+                    <ul class="nav treeview-menu menu-open">
+                        <li><a href="/product.htm?type=1">产品列表</a></li>
+                        <li><a href="/product.htm?type=2">线条列表</a></li>
+                        <li><a href="/product.htm?type=3">加工费列表</a></li>
+                    </ul>
+                </li>
                 <li class=""><a href="/order.htm"><i class="fa fa-circle-o"></i> 结算单</a></li>
-                <#--<li class="treeview" id="scrollspy-components">-->
-                    <#--<a href="javascript::;"><i class="fa fa-circle-o"></i> 销售管理</a>-->
-                    <#--<ul class="nav treeview-menu">-->
-                        <#--<li><a href="#component-main-header">出库单据</a></li>-->
-                    <#--</ul>-->
-                <#--</li>-->
+
             </ul>
         </div>
         <!-- /.sidebar -->
@@ -69,7 +71,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-            <#nested>
+        <#nested>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
