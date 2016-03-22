@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2016-03-19 22:30:20
+Date: 2016-03-22 23:19:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,7 +59,7 @@ INSERT INTO `tbl_order` VALUES ('62', '李四', '路3', '12345777777', '2016-03-
 DROP TABLE IF EXISTS `tbl_order_detail`;
 CREATE TABLE `tbl_order_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_id` int(255) DEFAULT NULL,
+  `project_id` int(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `spec1` double DEFAULT NULL,
   `spec2` double DEFAULT NULL,
@@ -95,15 +95,37 @@ CREATE TABLE `tbl_product` (
   `spec2` double(10,2) DEFAULT NULL,
   `price` double(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tbl_product
 -- ----------------------------
-INSERT INTO `tbl_product` VALUES ('1', '金典红玉灶面', '1', '30.00', '1.00', '1.20');
-INSERT INTO `tbl_product` VALUES ('3', '浅啡网门坎', '2', '1.00', '0.00', '15.00');
+INSERT INTO `tbl_product` VALUES ('1', '金典红玉灶面', '1', '30.00', '1.00', '1.23');
+INSERT INTO `tbl_product` VALUES ('3', '浅啡网门坎', '2', '1.00', '0.00', '16.00');
 INSERT INTO `tbl_product` VALUES ('8', '产品1', '1', '2.00', '2.00', '2.00');
-INSERT INTO `tbl_product` VALUES ('9', '产品2', '2', '2.00', '0.00', '2.00');
+INSERT INTO `tbl_product` VALUES ('11', '3', '3', null, null, '3.00');
+
+-- ----------------------------
+-- Table structure for tbl_project
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_project`;
+CREATE TABLE `tbl_project` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tbl_project
+-- ----------------------------
+INSERT INTO `tbl_project` VALUES ('1', null, '金典红玉灶面');
+INSERT INTO `tbl_project` VALUES ('3', null, '浅啡网门坎');
+INSERT INTO `tbl_project` VALUES ('8', null, '产品1');
+INSERT INTO `tbl_project` VALUES ('11', null, '3');
+INSERT INTO `tbl_project` VALUES ('12', '61', '12');
+INSERT INTO `tbl_project` VALUES ('13', '61', '33');
+INSERT INTO `tbl_project` VALUES ('15', '62', '222');
 
 -- ----------------------------
 -- Table structure for tbl_user
