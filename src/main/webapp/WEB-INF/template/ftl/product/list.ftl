@@ -45,10 +45,12 @@
 <@inc.footer nav>
 <script>
     function del(id) {
-        $.post('${ctx}product/del.htm', {id: id}, function (data, status) {
-            if (data.data == true) {
+        $.post('${ctx}product/del.htm', {id: id}, function (res, status) {
+            if (res.result == "success") {
                 alert("删除成功");
                 location = "/product.htm?type=${type}";
+            } else if (res.messages != "") {
+                alert(res.messages[0]);
             } else {
                 alert("删除失败");
             }

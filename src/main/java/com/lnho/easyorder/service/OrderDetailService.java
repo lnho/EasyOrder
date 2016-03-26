@@ -72,6 +72,12 @@ public class OrderDetailService extends BaseService<OrderDetail> {
         return result;
     }
 
+    public List<OrderDetail> queryByProjectId(Integer projectId) {
+        Query query = Query.build(OrderDetail.class);
+        query.addEq("projectId", projectId);
+        return this.findByQuery(query);
+    }
+
     public boolean deleteOrderDetail(Integer id) {
         OrderDetail orderDetail = get(id);
         if (orderDetail == null) {

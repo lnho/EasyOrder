@@ -34,6 +34,7 @@ public class OrderController {
         List<Order> list = orderService.list(keyword);
         model.addAttribute("data", list);
         model.addAttribute("keyword", keyword);
+        model.addAttribute("leftMenu", "order");
         return "order/list";
     }
 
@@ -42,7 +43,10 @@ public class OrderController {
         if (id != null) {
             Order order = orderService.get(id);
             model.addAttribute("data", order);
+        } else {
+            model.addAttribute("now", new Date());
         }
+        model.addAttribute("leftMenu", "order");
         return "order/edit";
     }
 

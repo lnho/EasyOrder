@@ -54,12 +54,11 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         <input type="date" class="form-control" name="orderTime" placeholder="时间"
-                               value="<#if data??>${data.orderTime?date}</#if>">
+                               value="<#if data??>${data.orderTime?date}<#else>${now?date}</#if>">
                     </div>
                 </div>
             </div>
             <!-- /.box-body -->
-
             <div class="box-footer">
                 <button type="button" class="btn btn-primary" id="submit">确定</button>
             </div>

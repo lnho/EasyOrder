@@ -14,7 +14,7 @@
         <div class="input-group search-bar">
             <input type="text" class="form-control" id="keyword" value="${keyword!""}">
             <span class="input-group-btn">
-                <button id="search" type="button" class="btn btn-info btn-flat">搜索</button>
+                <button id="search" type="button" class="btn btn-primary btn-flat">搜索</button>
             </span>
         </div>
         <button type="button" class="btn btn-primary" id="add">添加结算单</button>

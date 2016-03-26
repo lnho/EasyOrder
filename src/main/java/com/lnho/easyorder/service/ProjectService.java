@@ -1,8 +1,10 @@
 package com.lnho.easyorder.service;
 
+import com.lnho.easyorder.bean.OrderDetail;
 import com.lnho.easyorder.bean.Project;
 import com.lnho.easyorder.commons.mybatis.bean.Query;
 import com.lnho.easyorder.commons.mybatis.service.BaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,16 +17,26 @@ import java.util.List;
  */
 @Service
 public class ProjectService extends BaseService<Project> {
+    @Autowired
+    private OrderDetailService orderDetailService;
 
     public List<Project> list(Integer orderId) {
         Query query = Query.build(Project.class);
-        query.addEq("orderId",orderId);
+        query.addEq("orderId", orderId);
         return this.findByQuery(query);
     }
 
     public boolean deleteProject(Integer id) {
         Project project = get(id);
         if (project == null) {
+            return false;
+        }
+        List<Project> projects = list(project.getOrderId());
+        if (projects.size() < 2) {
+            return false;
+        }
+        List<OrderDetail> orderDetails = orderDetailService.queryByProjectId(project.getId());
+        if (orderDetails.size() > 0) {
             return false;
         }
         delete(id);

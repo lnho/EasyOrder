@@ -38,6 +38,7 @@ public class OrderDetailController {
         List<ProjectVo> list = orderDetailService.list(orderId);
         model.addAttribute("data", list);
         model.addAttribute("orderId", orderId);
+        model.addAttribute("leftMenu", "order");
         return "order_detail/list";
     }
 
@@ -58,6 +59,7 @@ public class OrderDetailController {
         model.addAttribute("products1", products1);
         model.addAttribute("products2", products2);
         model.addAttribute("products3", products3);
+        model.addAttribute("leftMenu", "order");
         return "order_detail/edit";
     }
 

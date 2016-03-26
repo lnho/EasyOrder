@@ -1,6 +1,7 @@
 package com.lnho.easyorder.service;
 
 import com.lnho.easyorder.bean.Order;
+import com.lnho.easyorder.bean.Project;
 import com.lnho.easyorder.commons.mybatis.service.BaseService;
 import com.lnho.easyorder.dao.OrderDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import java.util.List;
 public class OrderService extends BaseService<Order> {
     @Autowired
     private OrderDAO orderDAO;
+    @Autowired
+    private ProjectService projectService;
 
     public List<Order> list(String keyword) {
         return orderDAO.query("%" + keyword + "%");
@@ -33,7 +36,11 @@ public class OrderService extends BaseService<Order> {
     }
 
     public boolean createOrder(Order order) {
-        insert(order);
+        order = insert(order);
+        Project project = new Project();
+        project.setOrderId(order.getId());
+        project.setName("项目1");
+        projectService.createProject(project);
         return true;
     }
 

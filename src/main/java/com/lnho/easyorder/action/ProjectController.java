@@ -30,6 +30,7 @@ public class ProjectController {
         List<Project> list = projectService.list(orderId);
         model.addAttribute("data", list);
         model.addAttribute("orderId", orderId);
+        model.addAttribute("leftMenu", "order");
         return "project/list";
     }
 
@@ -39,6 +40,7 @@ public class ProjectController {
             return "404";
         }
         model.addAttribute("orderId", orderId);
+        model.addAttribute("leftMenu", "order");
         return "project/edit";
     }
 
@@ -47,8 +49,9 @@ public class ProjectController {
         if (id != null) {
             Project project = projectService.get(id);
             model.addAttribute("data", project);
-            model.addAttribute("orderId",project.getOrderId());
+            model.addAttribute("orderId", project.getOrderId());
         }
+        model.addAttribute("leftMenu", "order");
         return "project/edit";
     }
 
@@ -79,6 +82,9 @@ public class ProjectController {
             return Response.getSuccessResponse(false);
         }
         boolean result = projectService.deleteProject(id);
-        return Response.getSuccessResponse(result);
+        if (result) {
+            return Response.getSuccessResponse(result);
+        }
+        return Response.getFailedResponse("删除失败");
     }
 }

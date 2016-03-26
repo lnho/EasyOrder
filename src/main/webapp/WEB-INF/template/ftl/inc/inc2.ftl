@@ -14,7 +14,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="/fed/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/fed/css/skins/_all-skins.min.css">
-    <#--<link rel="stylesheet" href="/fed/css/style.css">-->
+<#--<link rel="stylesheet" href="/fed/css/style.css">-->
     <link rel="stylesheet" href="/fed/css/custom.css">
     <#nested>
 </head>
@@ -26,7 +26,7 @@
     <header class="main-header">
         <!-- Logo -->
         <!-- Logo -->
-        <a href="../index2.html" class="logo">
+        <a href="/order.htm" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>E</b>Order</span>
             <!-- logo for regular state and mobile devices -->
@@ -54,15 +54,24 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">功能</li>
-                <li class="treeview active" id="scrollspy-components">
-                    <a href="javascript::;"><i class="fa fa-circle-o"></i> 产品管理</a>
-                    <ul class="treeview-menu menu-open">
-                        <li><a href="/product.htm?type=1">产品列表</a></li>
-                        <li><a href="/product.htm?type=2">线条列表</a></li>
-                        <li><a href="/product.htm?type=3">加工费列表</a></li>
+                <li class="treeview <#if leftMenu=='product1'||leftMenu=='product2'||leftMenu=='product3'>active</#if>"
+                    id="scrollspy-components">
+                    <a href="javascript::;"><i class="fa fa-gear"></i> 产品管理</a>
+                    <ul class="treeview-menu">
+                        <li class="<#if leftMenu=='product1'>active</#if>">
+                            <a href="/product.htm?type=1"><i class="fa fa-circle-o"></i> 产品列表</a>
+                        </li>
+                        <li class="<#if leftMenu=='product2'>active</#if>">
+                            <a href="/product.htm?type=2"><i class="fa fa-circle-o"></i> 线条列表</a>
+                        </li>
+                        <li class="<#if leftMenu=='product3'>active</#if>">
+                            <a href="/product.htm?type=3"><i class="fa fa-circle-o"></i> 加工费列表</a>
+                        </li>
                     </ul>
                 </li>
-                <li class=""><a href="/order.htm"><i class="fa fa-circle-o"></i> 结算单</a></li>
+                <li class="<#if leftMenu=='order'>active</#if>">
+                    <a href="/order.htm"><i class="fa fa-archive"></i> 结算单</a>
+                </li>
 
             </ul>
         </div>

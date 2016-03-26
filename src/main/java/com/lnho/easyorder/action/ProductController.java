@@ -30,6 +30,7 @@ public class ProductController {
         List<Product> list = productService.list(type);
         model.addAttribute("data", list);
         model.addAttribute("type", type);
+        model.addAttribute("leftMenu", "product" + type);
         return "product/list";
     }
 
@@ -38,6 +39,7 @@ public class ProductController {
         if (type == null) {
             return "404";
         }
+        model.addAttribute("leftMenu", "product" + type);
         model.addAttribute("type", type);
         return "product/edit";
     }
@@ -48,6 +50,7 @@ public class ProductController {
             Product product = productService.get(id);
             model.addAttribute("data", product);
             model.addAttribute("type", product.getType());
+            model.addAttribute("leftMenu", "product" + product.getType());
         }
         return "product/edit";
     }
