@@ -9,7 +9,6 @@ package com.lnho.easyorder.action;
 
 import com.lnho.easyorder.bean.Order;
 import com.lnho.easyorder.commons.web.Response;
-import com.lnho.easyorder.param.LogParam;
 import com.lnho.easyorder.service.OrderService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +27,13 @@ public class OrderController {
     private OrderService orderService;
 
     @RequestMapping()
-    public String list(LogParam pageQueryParam, Model model) {
-        List<Order> auctionVoList = orderService.list();
-        model.addAttribute("data", auctionVoList);
+    public String list(String keyword, Model model) {
+        if (keyword == null) {
+            keyword = "";
+        }
+        List<Order> list = orderService.list(keyword);
+        model.addAttribute("data", list);
+        model.addAttribute("keyword", keyword);
         return "order/list";
     }
 

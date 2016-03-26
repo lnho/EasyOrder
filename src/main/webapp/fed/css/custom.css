@@ -2,3 +2,8 @@
     font-weight: bold;
     font-size: 17px;
 }
+.search-bar{
+    width: 200px;
+    float: left;
+    margin-right: 20px;
+}

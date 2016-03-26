@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lnho.easyorder.dao.OrderDAO">
+    <resultMap type="com.lnho.easyorder.bean.Order" id="resultOrder">
+        <id column="id" property="id"/>
+        <result column="client_name" property="clientName"/>
+        <result column="client_address" property="clientAddress"/>
+        <result column="client_phone" property="clientPhone"/>
+        <result column="order_time" property="orderTime"/>
+    </resultMap>
+    <select id="query" parameterType="String" resultMap="resultOrder">
+        SELECT * FROM tbl_order where client_name like #{keyword} or client_phone like #{keyword}
+    </select>
+</mapper>
+
+
+

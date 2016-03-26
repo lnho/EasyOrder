@@ -2,6 +2,8 @@ package com.lnho.easyorder.service;
 
 import com.lnho.easyorder.bean.Order;
 import com.lnho.easyorder.commons.mybatis.service.BaseService;
+import com.lnho.easyorder.dao.OrderDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +16,11 @@ import java.util.List;
  */
 @Service
 public class OrderService extends BaseService<Order> {
+    @Autowired
+    private OrderDAO orderDAO;
 
-    public List<Order> list() {
-        return this.findAll();
+    public List<Order> list(String keyword) {
+        return orderDAO.query("%" + keyword + "%");
     }
 
     public boolean deleteOrder(Integer id) {

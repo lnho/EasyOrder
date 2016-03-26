@@ -11,6 +11,12 @@
     <#--<small>Current version 2.3.0</small>-->
     </h1>
     <div class="pull-right">
+        <div class="input-group search-bar">
+            <input type="text" class="form-control" id="keyword" value="${keyword!""}">
+            <span class="input-group-btn">
+                <button id="search" type="button" class="btn btn-info btn-flat">搜索</button>
+            </span>
+        </div>
         <button type="button" class="btn btn-primary" id="add">添加结算单</button>
     </div>
 </section>
@@ -63,6 +69,9 @@
     }
     $("#add").click(function () {
         location = "${ctx}order/edit.htm";
+    });
+    $("#search").click(function () {
+        location = "${ctx}order.htm?keyword="+$("#keyword").val();
     });
 </script>
 </@inc.footer>
