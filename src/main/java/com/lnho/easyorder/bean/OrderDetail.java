@@ -3,6 +3,7 @@ package com.lnho.easyorder.bean;
 import com.lnho.easyorder.commons.mybatis.annotation.Column;
 import com.lnho.easyorder.commons.mybatis.annotation.Id;
 import com.lnho.easyorder.commons.mybatis.annotation.Table;
+import com.lnho.easyorder.commons.mybatis.annotation.UnColumn;
 
 /**
  * com.lnho.easyorder.bean
@@ -14,10 +15,12 @@ import com.lnho.easyorder.commons.mybatis.annotation.Table;
 public class OrderDetail {
     @Id("id")
     private Integer id;
+    @Column("order_id")
+    private Integer orderId;
     @Column("project_id")
     private Integer projectId;
-    @Column("name")
-    private String name;
+    @Column("product_id")
+    private Integer productId;
     @Column("spec1")
     private Double spec1;
     @Column("spec2")
@@ -34,6 +37,32 @@ public class OrderDetail {
     private String remark;
     @Column("type")
     private Integer type;
+    @UnColumn
+    private String name;
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
 
     public Integer getId() {
         return id;
@@ -49,14 +78,6 @@ public class OrderDetail {
 
     public void setProjectId(Integer projectId) {
         this.projectId = projectId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Double getSpec1() {

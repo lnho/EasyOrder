@@ -9,9 +9,12 @@ package com.lnho.easyorder.action;
 
 import com.lnho.easyorder.bean.OrderDetail;
 import com.lnho.easyorder.bean.Product;
+import com.lnho.easyorder.bean.Project;
 import com.lnho.easyorder.commons.web.Response;
 import com.lnho.easyorder.service.OrderDetailService;
 import com.lnho.easyorder.service.ProductService;
+import com.lnho.easyorder.service.ProjectService;
+import com.lnho.easyorder.vo.ProjectVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,10 +30,12 @@ public class OrderDetailController {
     private OrderDetailService orderDetailService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private ProjectService projectService;
 
     @RequestMapping()
     public String list(Integer orderId, Model model) {
-        List<OrderDetail> list = orderDetailService.list(orderId);
+        List<ProjectVo> list = orderDetailService.list(orderId);
         model.addAttribute("data", list);
         model.addAttribute("orderId", orderId);
         return "order_detail/list";
@@ -41,12 +46,18 @@ public class OrderDetailController {
         if (id != null) {
             OrderDetail orderDetail = orderDetailService.get(id);
             model.addAttribute("data", orderDetail);
-            model.addAttribute("orderId", orderDetail.getProjectId());
-        } else {
-            model.addAttribute("orderId", orderId);
+            Project project = projectService.get(orderDetail.getProjectId());
+            orderId = project.getOrderId();
         }
-        List<Product> products = productService.list(1);
-        model.addAttribute("products", products);
+        model.addAttribute("orderId", orderId);
+        List<Project> projects = projectService.list(orderId);
+        List<Product> products1 = productService.list(1);
+        List<Product> products2 = productService.list(2);
+        List<Product> products3 = productService.list(3);
+        model.addAttribute("projects", projects);
+        model.addAttribute("products1", products1);
+        model.addAttribute("products2", products2);
+        model.addAttribute("products3", products3);
         return "order_detail/edit";
     }
 
@@ -56,27 +67,31 @@ public class OrderDetailController {
         if (orderDetail.getRemark() == null) {
             orderDetail.setRemark("");
         }
-        if (orderDetail.getSpec1() == null || orderDetail.getType() == null || orderDetail.getPrice() == null) {
+        if (orderDetail.getType() == null || orderDetail.getProjectId() == null ||
+                orderDetail.getNum() == null || orderDetail.getPrice() == null) {
             return Response.getFailedResponse("数据不能为空");
         }
-        Double money = 0.0;
-        if (orderDetail.getType() == 1) {
-            if (orderDetail.getSpec2() == null || orderDetail.getArea() == null) {
+        Double money;
+        orderDetail.setType(orderDetail.getType());
+        if (orderDetail.getType() == 0) {
+            if (orderDetail.getSpec1() == null || orderDetail.getSpec2() == null) {
                 return Response.getFailedResponse("数据不能为空");
             } else {
-                money = orderDetail.getSpec1() * orderDetail.getSpec2() * orderDetail.getPrice() * orderDetail.getArea();
-                orderDetail.setNum(0);
+                Double area = orderDetail.getSpec1() * orderDetail.getSpec2() * orderDetail.getNum();
+                money = area * orderDetail.getPrice();
+                orderDetail.setArea(area);
             }
-        }
-        if (orderDetail.getType() == 2) {
+        } else {
             if (orderDetail.getNum() == null) {
                 return Response.getFailedResponse("数据不能为空");
             } else {
-                money = orderDetail.getSpec1() * orderDetail.getPrice() * orderDetail.getNum();
+                money = orderDetail.getPrice() * orderDetail.getNum();
+                orderDetail.setSpec1(0.0);
                 orderDetail.setSpec2(0.0);
                 orderDetail.setArea(0.0);
             }
         }
+        orderDetail.setOrderId(projectService.get(orderDetail.getProjectId()).getOrderId());
         orderDetail.setMoney(money);
         boolean result;
         if (orderDetail.getId() == null) {

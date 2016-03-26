@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/fed/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/fed/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="/fed/css/style.css">
+    <link rel="stylesheet" href="/fed/css/custom.css">
     <#nested>
 </head>
 </#macro>

@@ -22,32 +22,49 @@
     <table class="table table-bordered">
         <thead>
         <tr>
+            <th>项目号</th>
             <th>名称</th>
             <th>长或高(米)</th>
             <th>宽(米)</th>
-            <th>单价(每平方米或每米)</th>
             <th>数量(条片)</th>
             <th>面积(平方米)</th>
+            <th>单价(每平方米或每米)</th>
             <th>金额</th>
             <th>备注</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody>
-            <#list data as item>
+            <#list data as project>
+                <#assign orderDetails=project.orderDetails>
+                <#list orderDetails as item>
+                <tr>
+                    <td><#if item_index=0>${project.no}</#if></td>
+                    <td>${item.name}</td>
+                    <td><#if item.type==0>${item.spec1}</#if></td>
+                    <td><#if item.type==0>${item.spec2}</#if></td>
+                    <td>${item.num}</td>
+                    <td><#if item.type==0>${item.area}</#if></td>
+                    <td>${item.price}</td>
+                    <td>${item.money}</td>
+                    <td>${item.remark}</td>
+                    <td>
+                        <a class="btn btn-primary" href="${ctx}order/detail/edit.htm?id=${item.id}">编辑</a>
+                        <a class="btn btn-primary" onclick="del(${item.id})">删除</a>
+                    </td>
+                </tr>
+                </#list>
             <tr>
-                <td>${item.name}</td>
-                <td>${item.spec1}</td>
-                <td><#if item.type==1>${item.spec2}</#if></td>
-                <td>${item.price}</td>
-                <td><#if item.type==2>${item.num}</#if></td>
-                <td><#if item.type==1>${item.area}</#if></td>
-                <td>${item.money}</td>
-                <td>${item.remark}</td>
-                <td>
-                    <a class="btn btn-primary" href="${ctx}order/detail/edit.htm?id=${item.id}">编辑</a>
-                    <a class="btn btn-primary" onclick="del(${item.id})">删除</a>
-                </td>
+                <td></td>
+                <td class="project-count text-center">${project.title}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="project-count">${project.area}</td>
+                <td></td>
+                <td class="project-count">${project.money}</td>
+                <td></td>
+                <td></td>
             </tr>
             </#list>
         </tbody>
