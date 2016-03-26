@@ -18,38 +18,39 @@
 
 <!-- Main content -->
 <section class="content">
-    <div class="row">
-        <!-- general form elements -->
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title"><#if data??>编辑产品<#else>添加产品</#if></h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" lpformnum="1" id="edit-form">
-                <input type="hidden" name="id" value="<#if data??>${data.id}</#if>">
-                <input type="hidden" name="type" value="${type}">
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">名称</label>
-                        <input type="text" class="form-control" name="name" placeholder="名称"
-                               autocomplete="off" value="<#if data??>${data.name}</#if>">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">单价(每平方米或每米)</label>
-                        <input type="number" class="form-control" name="price"
-                               placeholder="单价(每平方米或每米)" autocomplete="off" value="<#if data??>${data.price}</#if>">
-                    </div>
-                </div>
-                <!-- /.box-body -->
-
-                <div class="box-footer">
-                    <button type="button" id="submit" class="btn btn-primary">确定</button>
-                </div>
-            </form>
+    <!-- general form elements -->
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title"><#if data??>编辑产品<#else>添加产品</#if></h3>
         </div>
-        <!-- /.box -->
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form role="form" lpformnum="1" id="edit-form">
+            <input type="hidden" name="id" value="<#if data??>${data.id}</#if>">
+            <input type="hidden" name="type" value="${type}">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">名称</label>
+                    <input type="text" class="form-control" name="name" placeholder="名称"
+                           autocomplete="off" value="<#if data??>${data.name}</#if>">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">单价(每平方米或每米)</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                        <input type="number" class="form-control" name="price" placeholder="单价(每平方米或每米)"
+                               autocomplete="off" value="<#if data??>${data.price}</#if>">
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+
+            <div class="box-footer">
+                <button type="button" id="submit" class="btn btn-primary">确定</button>
+            </div>
+        </form>
     </div>
+    <!-- /.box -->
 </section>
 </@inc.body>
 <@inc.footer nav>

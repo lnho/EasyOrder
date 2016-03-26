@@ -114,15 +114,22 @@
                         <div class="form-group">
                             <label for="price" class="col-sm-2 control-label">单价</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" name="price" readonly
-                                       id="price-val" placeholder="单价(每平方米或每米)" value="<#if data??>${data.price}</#if>">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                                    <input type="number" class="form-control" name="price" readonly
+                                           id="price-val" placeholder="单价(每平方米或每米)"
+                                           value="<#if data??>${data.price}</#if>">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="money" class="col-sm-2 control-label">金额</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" name="money" placeholder="金额"
-                                       id="money" readonly value="<#if data??>${data.money}</#if>">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                                    <input type="number" class="form-control" name="money" placeholder="金额"
+                                           id="money" readonly value="<#if data??>${data.money}</#if>">
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -18,47 +18,54 @@
 
 <!-- Main content -->
 <section class="content">
-    <div class="row">
-        <!-- general form elements -->
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title"><#if data??>编辑结算单<#else>添加结算单</#if></h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" lpformnum="1" id="edit-form">
-                <input type="hidden" name="id" value="<#if data??>${data.id}</#if>">
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">客户</label>
-                        <input type="text" class="form-control" name="clientName" placeholder="客户"
-                               autocomplete="off" value="<#if data??>${data.clientName}</#if>">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">地址</label>
+    <!-- general form elements -->
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title"><#if data??>编辑结算单<#else>添加结算单</#if></h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form role="form" lpformnum="1" id="edit-form">
+            <input type="hidden" name="id" value="<#if data??>${data.id}</#if>">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">客户</label>
+                    <input type="text" class="form-control" name="clientName" placeholder="客户"
+                           autocomplete="off" value="<#if data??>${data.clientName}</#if>">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">地址</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
                         <input type="text" class="form-control" name="clientAddress"
                                placeholder="地址" autocomplete="off" value="<#if data??>${data.clientAddress}</#if>">
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">电话</label>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">电话</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-phone"></i></span>
                         <input type="number" class="form-control" name="clientPhone"
                                placeholder="电话" autocomplete="off" value="<#if data??>${data.clientPhone}</#if>">
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">创建日期</label>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">创建日期</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         <input type="date" class="form-control" name="orderTime" placeholder="时间"
                                value="<#if data??>${data.orderTime?date}</#if>">
                     </div>
                 </div>
-                <!-- /.box-body -->
+            </div>
+            <!-- /.box-body -->
 
-                <div class="box-footer">
-                    <button type="button" class="btn btn-primary" id="submit">确定</button>
-                </div>
-            </form>
-        </div>
-        <!-- /.box -->
+            <div class="box-footer">
+                <button type="button" class="btn btn-primary" id="submit">确定</button>
+            </div>
+        </form>
     </div>
+    <!-- /.box -->
 </section>
 </@inc.body>
 <@inc.footer nav>

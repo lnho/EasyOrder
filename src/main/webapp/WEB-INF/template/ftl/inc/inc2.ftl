@@ -14,7 +14,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="/fed/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/fed/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="/fed/css/style.css">
+    <#--<link rel="stylesheet" href="/fed/css/style.css">-->
     <link rel="stylesheet" href="/fed/css/custom.css">
     <#nested>
 </head>
@@ -52,11 +52,11 @@
         <div class="sidebar" id="scrollspy">
 
             <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="nav sidebar-menu">
+            <ul class="sidebar-menu">
                 <li class="header">功能</li>
                 <li class="treeview active" id="scrollspy-components">
                     <a href="javascript::;"><i class="fa fa-circle-o"></i> 产品管理</a>
-                    <ul class="nav treeview-menu menu-open">
+                    <ul class="treeview-menu menu-open">
                         <li><a href="/product.htm?type=1">产品列表</a></li>
                         <li><a href="/product.htm?type=2">线条列表</a></li>
                         <li><a href="/product.htm?type=3">加工费列表</a></li>
