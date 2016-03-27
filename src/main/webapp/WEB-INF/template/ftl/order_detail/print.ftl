@@ -1,0 +1,112 @@
+<#import '/WEB-INF/template/ftl/inc/inc2.ftl' as inc />
+<#assign title='首页'>
+<#assign nav='1'>
+<@inc.header title>
+<style>
+    .invoice table thead tr th {
+        vertical-align: middle;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .invoice table tbody tr td {
+        vertical-align: middle;
+    }
+
+    .invoice table tbody tr td.number {
+        text-align: right;
+    }
+
+    .project-count {
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 24px;
+        width: 100%;
+        font-weight: 600;
+    }
+
+    #print-header {
+        position: relative;
+        margin-bottom: 10px;
+    }
+
+    .no {
+        position: absolute;
+        right: 0;
+        top: 27px;
+    }
+
+    .clientInfo {
+        width: 100%;
+        float: left;
+    }
+</style>
+</@inc.header>
+<body onload="window.print();">
+<div class="wrapper">
+    <!-- Main content -->
+    <section class="invoice">
+        <div id="print-header" class="clearfix">
+            <h1>${printTitle}</h1>
+            <span class="no">单据编号：${order.id}</span>
+            <span class="pull-right">${order.orderTime?date}</span>
+            <div class="clientInfo">客户：${order.clientName}　地址：${order.clientAddress}　电话：${order.clientPhone}</div>
+            <div class="pull-right">单价及金额单位：元</div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th rowspan="2" width="4%">项目号</th>
+                <th rowspan="2" width="26%">名　　　称</th>
+                <th colspan="4" width="33%">规　格　数　量</th>
+                <th rowspan="2" width="8%">单价(每㎡或m)</th>
+                <th rowspan="2" width="15%">金　额</th>
+                <th rowspan="2">备　注</th>
+            </tr>
+            <tr>
+                <th>长或高(米)</th>
+                <th>宽(米)</th>
+                <th>数量(条片)</th>
+                <th>面积(㎡)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <#list data as project>
+                <#assign orderDetails=project.orderDetails>
+                <#list orderDetails as item>
+                <tr>
+                    <td class="text-center"><#if item_index=0>${project.no}</#if></td>
+                    <td>${item.name}</td>
+                    <td class="number"><#if item.type==0>${item.spec1}</#if></td>
+                    <td class="number"><#if item.type==0>${item.spec2}</#if></td>
+                    <td class="number">${item.num}</td>
+                    <td class="number"><#if item.type==0>${item.area}</#if></td>
+                    <td class="number">${item.price}</td>
+                    <td class="number">${item.money}</td>
+                    <td>${item.remark}</td>
+                </tr>
+                </#list>
+            <tr>
+                <td></td>
+                <td class="project-count text-center">${project.title}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="project-count number">${project.area}</td>
+                <td></td>
+                <td class="project-count number">${project.money}</td>
+                <td></td>
+            </tr>
+            </#list>
+            </tbody>
+        </table>
+    </section>
+</div>
+</body>
+<!-- Main content -->
+<@inc.footer nav>
+</@inc.footer>

@@ -10,6 +10,15 @@ public class Global {
     private String adminUser;
     private String adminPass;
     private String siteName;
+    private String printTitle;
+
+    public String getPrintTitle() {
+        return printTitle;
+    }
+
+    public void setPrintTitle(String printTitle) {
+        this.printTitle = printTitle;
+    }
 
     public String getSiteName() {
         return siteName;

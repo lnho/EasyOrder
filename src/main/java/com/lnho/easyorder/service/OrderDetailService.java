@@ -27,7 +27,7 @@ public class OrderDetailService extends BaseService<OrderDetail> {
     @Autowired
     private ProjectService projectService;
 
-    public List<ProjectVo> list(Integer orderId) {
+    public List<ProjectVo> list(Integer orderId, boolean print) {
         List<ProjectVo> result = new ArrayList<ProjectVo>();
         List<Project> projects = projectService.list(orderId);
         Double totalArea = 0.0;
@@ -37,13 +37,17 @@ public class OrderDetailService extends BaseService<OrderDetail> {
             Project project = projects.get(i);
             ProjectVo projectVo = new ProjectVo();
             projectVo.setNo(NumberFormatUtil.formatInteger(i + 1));
-            StringBuilder name = new StringBuilder();
-            char[] nameChar = project.getName().toCharArray();
-            for (char c : nameChar) {
-                name.append(c).append("　");
+            if (print) {
+                projectVo.setTitle(project.getName() + "合计");
+            } else {
+                StringBuilder name = new StringBuilder();
+                char[] nameChar = project.getName().toCharArray();
+                for (char c : nameChar) {
+                    name.append(c).append("　");
+                }
+                name.append("合　计");
+                projectVo.setTitle(name.toString());
             }
-            name.append("合　计");
-            projectVo.setTitle(name.toString());
             projectVo.setOrderDetails(new ArrayList<OrderDetail>());
             map.put(project.getId(), i);
             result.add(projectVo);
@@ -67,7 +71,11 @@ public class OrderDetailService extends BaseService<OrderDetail> {
         projectVo.setArea(totalArea);
         projectVo.setMoney(totalMoney);
         projectVo.setOrderDetails(new ArrayList<OrderDetail>());
-        projectVo.setTitle("总　合　计");
+        if (print) {
+            projectVo.setTitle("总 合 计");
+        } else {
+            projectVo.setTitle("总　合　计");
+        }
         result.add(projectVo);
         return result;
     }

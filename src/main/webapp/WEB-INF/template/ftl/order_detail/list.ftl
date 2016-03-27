@@ -13,7 +13,8 @@
     <div class="pull-right">
         <button type="button" class="btn btn-primary" id="project">项目管理</button>
         <button type="button" class="btn btn-primary" id="add">添加结算单明细</button>
-        <button type="button" class="btn btn-primary" id="export">导出Excel文档</button>
+        <button type="button" class="btn btn-primary" id="print"><i class="fa fa-print"></i> 打印</button>
+        <button type="button" class="btn btn-primary" id="export"><i class="fa fa-download"></i> 导出Excel</button>
     </div>
 </section>
 <section class="content">
@@ -89,6 +90,9 @@
     }
     $("#add").click(function () {
         location = "${ctx}order/detail/edit.htm?orderId=${orderId}";
+    });
+    $("#print").click(function () {
+        window.open("${ctx}order/detail/print.htm?orderId=${orderId}");
     });
     $("#export").click(function () {
         alert("该功能暂不可用");

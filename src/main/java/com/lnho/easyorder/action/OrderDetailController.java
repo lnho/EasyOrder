@@ -11,7 +11,9 @@ import com.lnho.easyorder.bean.OrderDetail;
 import com.lnho.easyorder.bean.Product;
 import com.lnho.easyorder.bean.Project;
 import com.lnho.easyorder.commons.web.Response;
+import com.lnho.easyorder.conf.Global;
 import com.lnho.easyorder.service.OrderDetailService;
+import com.lnho.easyorder.service.OrderService;
 import com.lnho.easyorder.service.ProductService;
 import com.lnho.easyorder.service.ProjectService;
 import com.lnho.easyorder.vo.ProjectVo;
@@ -32,14 +34,29 @@ public class OrderDetailController {
     private ProductService productService;
     @Autowired
     private ProjectService projectService;
+    @Autowired
+    private OrderService orderService;
+    @Autowired
+    private Global global;
 
     @RequestMapping()
     public String list(Integer orderId, Model model) {
-        List<ProjectVo> list = orderDetailService.list(orderId);
+        List<ProjectVo> list = orderDetailService.list(orderId, false);
         model.addAttribute("data", list);
         model.addAttribute("orderId", orderId);
         model.addAttribute("leftMenu", "order");
         return "order_detail/list";
+    }
+
+    @RequestMapping("print")
+    public String print(Integer orderId, Model model) {
+        List<ProjectVo> list = orderDetailService.list(orderId, true);
+        model.addAttribute("data", list);
+        model.addAttribute("orderId", orderId);
+        model.addAttribute("leftMenu", "order");
+        model.addAttribute("order", orderService.get(orderId));
+        model.addAttribute("printTitle", global.getPrintTitle());
+        return "order_detail/print";
     }
 
     @RequestMapping("edit")

@@ -195,5 +195,6 @@
         <property name="adminUser" value="${admin.user}"></property>
         <property name="adminPass" value="${admin.pass}"></property>
         <property name="siteName" value="${site.name}"></property>
+        <property name="printTitle" value="${print.title}"></property>
     </bean>
 </beans>
