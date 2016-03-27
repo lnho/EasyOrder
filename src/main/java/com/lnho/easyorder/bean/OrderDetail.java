@@ -26,7 +26,7 @@ public class OrderDetail {
     @Column("spec2")
     private Double spec2;
     @Column("num")
-    private Integer num;
+    private Double num;
     @Column("area")
     private Double area;
     @Column("price")
@@ -96,11 +96,11 @@ public class OrderDetail {
         this.spec2 = spec2;
     }
 
-    public Integer getNum() {
+    public Double getNum() {
         return num;
     }
 
-    public void setNum(Integer num) {
+    public void setNum(Double num) {
         this.num = num;
     }
 

@@ -14,7 +14,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="/fed/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/fed/css/skins/_all-skins.min.css">
-<#--<link rel="stylesheet" href="/fed/css/style.css">-->
     <link rel="stylesheet" href="/fed/css/custom.css">
     <#nested>
 </head>
@@ -27,8 +26,6 @@
         <!-- Logo -->
         <!-- Logo -->
         <a href="/order.htm" class="logo">
-            <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>E</b>Order</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg">${siteName}</span>
         </a>

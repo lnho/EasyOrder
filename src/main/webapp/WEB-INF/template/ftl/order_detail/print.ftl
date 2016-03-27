@@ -2,49 +2,6 @@
 <#assign title='首页'>
 <#assign nav='1'>
 <@inc.header title>
-<style>
-    .invoice table thead tr th {
-        vertical-align: middle;
-        text-align: center;
-        font-weight: 500;
-    }
-
-    .invoice table tbody tr td {
-        vertical-align: middle;
-    }
-
-    .invoice table tbody tr td.number {
-        text-align: right;
-    }
-
-    .project-count {
-        font-weight: 500;
-        font-size: 16px;
-    }
-
-    h1 {
-        text-align: center;
-        font-size: 24px;
-        width: 100%;
-        font-weight: 600;
-    }
-
-    #print-header {
-        position: relative;
-        margin-bottom: 10px;
-    }
-
-    .no {
-        position: absolute;
-        right: 0;
-        top: 27px;
-    }
-
-    .clientInfo {
-        width: 100%;
-        float: left;
-    }
-</style>
 </@inc.header>
 <body onload="window.print();">
 <div class="wrapper">

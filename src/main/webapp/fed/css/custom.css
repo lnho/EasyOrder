@@ -1,9 +1,82 @@
 .project-count {
     font-weight: bold;
-    font-size: 17px;
 }
-.search-bar{
+
+.search-bar {
     width: 200px;
     float: left;
     margin-right: 20px;
+}
+
+.logo-lg {
+    font-size: 24px;
+}
+
+.order-detail table thead tr th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.order-detail table tbody tr td {
+    vertical-align: middle;
+}
+
+.order-detail table tbody tr td.number {
+    text-align: right;
+}
+
+/*打印*/
+.invoice table thead tr th {
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 500;
+}
+
+.invoice table tbody tr td {
+    vertical-align: middle;
+}
+
+.invoice table tbody tr td.number {
+    text-align: right;
+}
+
+.invoice .project-count {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+#print-header h1 {
+    text-align: center;
+    font-size: 22px;
+    width: 100%;
+    font-weight: 600;
+}
+
+#print-header {
+    position: relative;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+#print-header .no {
+    position: absolute;
+    right: 0;
+    top: 27px;
+}
+
+#print-header .clientInfo {
+    width: 100%;
+    float: left;
+}
+
+.invoice .table-bordered > thead > tr > th,
+.invoice .table-bordered > tbody > tr > th,
+.invoice .table-bordered > tfoot > tr > th,
+.invoice .table-bordered > thead > tr > td,
+.invoice .table-bordered > tbody > tr > td,
+.invoice .table-bordered > tfoot > tr > td,
+.invoice .table-bordered {
+    border: 1px solid #000;
+    padding: 4px;
+    font-size: 13px;
 }

@@ -12,27 +12,30 @@
     </h1>
     <div class="pull-right">
         <button type="button" class="btn btn-primary" id="project">项目管理</button>
-        <button type="button" class="btn btn-primary" id="add">添加结算单明细</button>
+        <button type="button" class="btn btn-primary" id="add">添加条目</button>
         <button type="button" class="btn btn-primary" id="print"><i class="fa fa-print"></i> 打印</button>
-        <button type="button" class="btn btn-primary" id="export"><i class="fa fa-download"></i> 导出Excel</button>
+    <#--<button type="button" class="btn btn-primary" id="export"><i class="fa fa-download"></i> 导出Excel</button>-->
     </div>
 </section>
-<section class="content">
+<section class="content order-detail">
     <div class="box">
         <div class="box-body">
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th class="text-center">项目号</th>
-                    <th>名称</th>
+                    <th rowspan="2" width="4%">项目号</th>
+                    <th rowspan="2" width="24%">名　　　称</th>
+                    <th colspan="4" width="30%">规　格　数　量</th>
+                    <th rowspan="2" width="8%">单价(每㎡或m)</th>
+                    <th rowspan="2" width="14%">金　额</th>
+                    <th rowspan="2">备　注</th>
+                    <th rowspan="2" width="130px">操　作</th>
+                </tr>
+                <tr>
                     <th>长或高(米)</th>
                     <th>宽(米)</th>
                     <th>数量(条片)</th>
-                    <th>面积(平方米)</th>
-                    <th>单价(每平方米或每米)</th>
-                    <th>金额</th>
-                    <th>备注</th>
-                    <th>操作</th>
+                    <th>面积(㎡)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,12 +45,12 @@
                         <tr>
                             <td class="text-center"><#if item_index=0>${project.no}</#if></td>
                             <td>${item.name}</td>
-                            <td><#if item.type==0>${item.spec1}</#if></td>
-                            <td><#if item.type==0>${item.spec2}</#if></td>
-                            <td>${item.num}</td>
-                            <td><#if item.type==0>${item.area}</#if></td>
-                            <td>${item.price}</td>
-                            <td>${item.money}</td>
+                            <td class="number"><#if item.type==0>${item.spec1}</#if></td>
+                            <td class="number"><#if item.type==0>${item.spec2}</#if></td>
+                            <td class="number">${item.num}</td>
+                            <td class="number"><#if item.type==0>${item.area}</#if></td>
+                            <td class="number">${item.price}</td>
+                            <td class="number">${item.money}</td>
                             <td>${item.remark}</td>
                             <td>
                                 <a class="btn btn-primary" href="${ctx}order/detail/edit.htm?id=${item.id}">编辑</a>
@@ -61,9 +64,9 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="project-count">${project.area}</td>
+                        <td class="project-count number">${project.area}</td>
                         <td></td>
-                        <td class="project-count">${project.money}</td>
+                        <td class="project-count number">${project.money}</td>
                         <td></td>
                         <td></td>
                     </tr>
