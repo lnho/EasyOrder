@@ -1,5 +1,7 @@
 package com.lnho.easyorder.commons.springmvc;
 
+import com.lnho.easyorder.commons.context.ApplicationContextUtil;
+import com.lnho.easyorder.conf.Global;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,14 +15,15 @@ public class WebFreeMarkerView extends FreeMarkerView {
         String ctx = request.getContextPath();
         ctx += "/";
         model.put("ctx", ctx);
+        model.put("siteName", ApplicationContextUtil.getBean(Global.class).getSiteName());
         HttpSession session = request.getSession();
         Object isLogin = session.getAttribute("isLogin");
-        if (isLogin != null && (Boolean) isLogin == true) {
+        if (isLogin != null && (Boolean) isLogin) {
             isLogin = true;
         } else {
             isLogin = false;
         }
-        model.put("isLogin",isLogin);
+        model.put("isLogin", isLogin);
     }
 
 }

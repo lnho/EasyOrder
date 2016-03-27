@@ -194,5 +194,6 @@
     <bean class="com.lnho.easyorder.conf.Global">
         <property name="adminUser" value="${admin.user}"></property>
         <property name="adminPass" value="${admin.pass}"></property>
+        <property name="siteName" value="${site.name}"></property>
     </bean>
 </beans>

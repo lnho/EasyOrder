@@ -30,7 +30,7 @@
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>E</b>Order</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Easy</b>Order</span>
+            <span class="logo-lg">${siteName}</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">

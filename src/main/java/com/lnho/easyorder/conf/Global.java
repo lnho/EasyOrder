@@ -9,6 +9,15 @@ package com.lnho.easyorder.conf;
 public class Global {
     private String adminUser;
     private String adminPass;
+    private String siteName;
+
+    public String getSiteName() {
+        return siteName;
+    }
+
+    public void setSiteName(String siteName) {
+        this.siteName = siteName;
+    }
 
     public String getAdminUser() {
         return adminUser;
