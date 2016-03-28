@@ -9,7 +9,7 @@
 }
 
 .logo-lg {
-    font-size: 24px;
+    font-size: 22px;
 }
 
 .order-detail table thead tr th {
@@ -47,7 +47,7 @@
 
 #print-header h1 {
     text-align: center;
-    font-size: 22px;
+    font-size: 26px;
     width: 100%;
     font-weight: 600;
 }
@@ -67,6 +67,7 @@
 #print-header .clientInfo {
     width: 100%;
     float: left;
+    font-size: 16px;
 }
 
 .invoice .table-bordered > thead > tr > th,

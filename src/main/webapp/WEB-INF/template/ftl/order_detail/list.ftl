@@ -24,7 +24,7 @@
                 <thead>
                 <tr>
                     <th rowspan="2" width="4%">项目号</th>
-                    <th rowspan="2" width="24%">名　　　称</th>
+                    <th rowspan="2" width="20%">名　　　称</th>
                     <th colspan="4" width="30%">规　格　数　量</th>
                     <th rowspan="2" width="8%">单价(每㎡或m)</th>
                     <th rowspan="2" width="14%">金　额</th>
