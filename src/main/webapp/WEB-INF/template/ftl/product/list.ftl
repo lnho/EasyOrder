@@ -22,6 +22,9 @@
                 <tr>
                     <th>名称</th>
                     <th>单价(每平方米或每米)</th>
+                    <#if type==2>
+                        <th>宽度(米)</th>
+                    </#if>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -30,6 +33,9 @@
                     <tr>
                         <td>${item.name}</td>
                         <td>${item.price}</td>
+                        <#if type==2>
+                            <td>${item.spec2!0}</td>
+                        </#if>
                         <td>
                             <a class="btn btn-primary" href="${ctx}product/edit.htm?id=${item.id}">修改</a>
                             <a class="btn btn-primary" onclick="del(${item.id})">删除</a>

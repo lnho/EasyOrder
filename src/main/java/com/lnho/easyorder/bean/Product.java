@@ -20,6 +20,26 @@ public class Product {
     private Integer type;
     @Column("price")
     private Double price;
+    @Column("spec1")
+    private Double spec1;
+    @Column("spec2")
+    private Double spec2;
+
+    public Double getSpec1() {
+        return spec1;
+    }
+
+    public void setSpec1(Double spec1) {
+        this.spec1 = spec1;
+    }
+
+    public Double getSpec2() {
+        return spec2;
+    }
+
+    public void setSpec2(Double spec2) {
+        this.spec2 = spec2;
+    }
 
     public Integer getId() {
         return id;

@@ -61,6 +61,9 @@ public class ProductController {
         if (product.getType() == null || StringUtils.isBlank(product.getName()) || product.getPrice() == null) {
             return Response.getFailedResponse("请全部填写后提交");
         }
+        if (product.getSpec2() == null) {
+            product.setSpec2(0.0);
+        }
         boolean result;
         try {
             if (product.getId() == null) {

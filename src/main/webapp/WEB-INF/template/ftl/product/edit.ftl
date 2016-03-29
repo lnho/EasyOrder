@@ -42,6 +42,13 @@
                                autocomplete="off" value="<#if data??>${data.price}</#if>">
                     </div>
                 </div>
+                <#if type==2>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">宽度(米)</label>
+                        <input type="number" class="form-control" name="spec2" placeholder="宽度(米)"
+                               autocomplete="off" value="<#if data??>${data.spec2!0}<#else>0</#if>">
+                    </div>
+                </#if>
             </div>
             <!-- /.box-body -->
 

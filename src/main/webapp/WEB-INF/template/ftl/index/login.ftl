@@ -1,4 +1,4 @@
-<#import '/WEB-INF/template/ftl/inc/inc.ftl' as inc />
+<#import '/WEB-INF/template/ftl/inc/inc2.ftl' as inc />
 <#assign title='首页'>
 <#assign nav='1'>
 <@inc.header title>

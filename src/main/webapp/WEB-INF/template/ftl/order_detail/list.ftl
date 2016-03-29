@@ -45,10 +45,10 @@
                         <tr>
                             <td class="text-center"><#if item_index=0>${project.no}</#if></td>
                             <td>${item.name}</td>
-                            <td class="number"><#if item.type==0>${item.spec1}</#if></td>
-                            <td class="number"><#if item.type==0>${item.spec2}</#if></td>
+                            <td class="number"><#if item.type==1||item.type==2>${item.spec1}</#if></td>
+                            <td class="number"><#if item.type==1||item.type==2>${item.spec2}</#if></td>
                             <td class="number">${item.num}</td>
-                            <td class="number"><#if item.type==0>${item.area}</#if></td>
+                            <td class="number"><#if item.type==1>${item.area}</#if></td>
                             <td class="number">${item.price}</td>
                             <td class="number">${item.money}</td>
                             <td>${item.remark}</td>

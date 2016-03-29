@@ -9,6 +9,7 @@ package com.lnho.easyorder.action;
 
 import com.lnho.easyorder.bean.OrderDetail;
 import com.lnho.easyorder.bean.Product;
+import com.lnho.easyorder.bean.ProductType;
 import com.lnho.easyorder.bean.Project;
 import com.lnho.easyorder.commons.web.Response;
 import com.lnho.easyorder.conf.Global;
@@ -92,23 +93,30 @@ public class OrderDetailController {
         }
         Double money;
         orderDetail.setType(orderDetail.getType());
-        if (orderDetail.getType() == 0) {
+        if (orderDetail.getType() == ProductType.PRODUCT.getId()) {
             if (orderDetail.getSpec1() == null || orderDetail.getSpec2() == null) {
                 return Response.getFailedResponse("数据不能为空");
-            } else {
-                Double area = orderDetail.getSpec1() * orderDetail.getSpec2() * orderDetail.getNum();
-                money = area * orderDetail.getPrice();
-                orderDetail.setArea(area);
             }
+            Double area = orderDetail.getSpec1() * orderDetail.getSpec2() * orderDetail.getNum();
+            money = area * orderDetail.getPrice();
+            orderDetail.setArea(area);
+        } else if (orderDetail.getType() == ProductType.LINE.getId()) {
+            if (orderDetail.getSpec1() == null) {
+                return Response.getFailedResponse("数据不能为空");
+            }
+            if (orderDetail.getSpec2() == null) {
+                orderDetail.setSpec2(0.0);
+            }
+            money = orderDetail.getSpec1() * orderDetail.getNum() * orderDetail.getPrice();
+            orderDetail.setArea(0.0);
         } else {
             if (orderDetail.getNum() == null) {
                 return Response.getFailedResponse("数据不能为空");
-            } else {
-                money = orderDetail.getPrice() * orderDetail.getNum();
-                orderDetail.setSpec1(0.0);
-                orderDetail.setSpec2(0.0);
-                orderDetail.setArea(0.0);
             }
+            money = orderDetail.getPrice() * orderDetail.getNum();
+            orderDetail.setSpec1(0.0);
+            orderDetail.setSpec2(0.0);
+            orderDetail.setArea(0.0);
         }
         orderDetail.setOrderId(projectService.get(orderDetail.getProjectId()).getOrderId());
         orderDetail.setMoney(money);

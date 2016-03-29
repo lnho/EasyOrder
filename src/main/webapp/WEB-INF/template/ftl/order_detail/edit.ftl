@@ -47,10 +47,10 @@
                             <label for="name" class="col-sm-2 control-label">名称</label>
                             <div class="col-sm-4">
                                 <select name="type" id="type" class="form-control"
-                                        onchange="changeType(this.options.selectedIndex)">
-                                    <option value="0">产品列表</option>
-                                    <option value="1">线条列表</option>
-                                    <option value="2">加工费列表</option>
+                                        onchange="changeType(this.options.selectedIndex+1)">
+                                    <option value="1">产品列表</option>
+                                    <option value="2">线条列表</option>
+                                    <option value="3">加工费列表</option>
                                 </select>
                             </div>
                             <div class="col-sm-6">
@@ -171,12 +171,16 @@
         cal();
     });
     cal();
-    function change(index) {
-        if (index == 0) {
+    function change(type) {
+        if (type == 1) {//产品列表
             $("#spec1").removeClass("hide");
             $("#spec2").removeClass("hide");
             $("#area").removeClass("hide");
-        } else {
+        } else if (type == 2) {//线条列表
+            $("#spec1").removeClass("hide");
+            $("#spec2").removeClass("hide");
+            $("#area").addClass("hide");
+        } else {//加工费列表
             $("#spec1").addClass("hide");
             $("#spec2").addClass("hide");
             $("#area").addClass("hide");
@@ -190,10 +194,12 @@
         var area = 0;
         var num = $('#num-val').val();
         var money = 0;
-        if (type == "0") {
+        if (type == "1") {
             area = spec1 * spec2 * num;
             money = area * price;
             $('#area-val').val(area.toFixed(3));
+        } else if (type == "2") {
+            money = spec1 * price * num;
         } else {
             money = price * num;
         }
@@ -201,34 +207,37 @@
     }
     var allProducts = [];
     var products = [];
-    var currentType = 0;
+    var currentType = 1;
         <#list products1 as item>
-        var product = ['${item.id}', '${item.name}', '${item.price}'];
+        var product = ['${item.id}', '${item.name}', '${item.price}', '${item.spec2}'];
         products.push(product);
         </#list>
     allProducts.push(products);
     products = [];
         <#list products2 as item>
-        var product = ['${item.id}', '${item.name}', '${item.price}'];
+        var product = ['${item.id}', '${item.name}', '${item.price}', '${item.spec2}'];
         products.push(product);
         </#list>
     allProducts.push(products);
     products = [];
         <#list products3 as item>
-        var product = ['${item.id}', '${item.name}', '${item.price}'];
+        var product = ['${item.id}', '${item.name}', '${item.price}', '${item.spec2}'];
         products.push(product);
         </#list>
     allProducts.push(products);
     products = [];
     function changeName(index) {
-        var product = allProducts[currentType][index];
+        var product = allProducts[currentType - 1][index];
         change(currentType);
         $("#price-val").val(product[2]);
         $("#type").val(currentType);
+        if (currentType == 2) {
+            $("#spec2-val").val(product[3]);
+        }
         cal();
     }
     function changeNameById(productId) {
-        var products = allProducts[currentType];
+        var products = allProducts[currentType - 1];
         for (var index in products) {
             var product = products[index];
             if (product[0] == productId) {
@@ -237,9 +246,9 @@
             }
         }
     }
-    function changeType(index) {
-        currentType = index;
-        var products = allProducts[index];
+    function changeType(type) {
+        currentType = type;
+        var products = allProducts[type - 1];
         $("#name").html("");
         for (var index in products) {
             var product = products[index];
@@ -252,7 +261,7 @@
         changeType(${data.type});
         changeNameById(${data.productId});
         <#else>
-        changeType(0);
+        changeType(1);
         </#if>
 </script>
 </@inc.footer>
