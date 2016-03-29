@@ -1,6 +1,7 @@
 package com.lnho.easyorder.service;
 
 import com.lnho.easyorder.bean.OrderDetail;
+import com.lnho.easyorder.bean.ProductType;
 import com.lnho.easyorder.bean.Project;
 import com.lnho.easyorder.commons.mybatis.bean.Query;
 import com.lnho.easyorder.commons.mybatis.service.BaseService;
@@ -59,7 +60,7 @@ public class OrderDetailService extends BaseService<OrderDetail> {
             orderDetail.setName(productService.get(orderDetail.getProductId()).getName());
             Integer index = map.get(orderDetail.getProjectId());
             ProjectVo projectVo = result.get(index);
-            if (orderDetail.getType() == 0) {
+            if (orderDetail.getType() == ProductType.PRODUCT.getId()) {
                 projectVo.setArea(projectVo.getArea() + orderDetail.getArea());
                 totalArea += orderDetail.getArea();
             }
