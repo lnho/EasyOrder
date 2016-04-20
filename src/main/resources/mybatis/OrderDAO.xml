@@ -12,6 +12,34 @@
     <select id="query" parameterType="String" resultMap="resultOrder">
         SELECT * FROM tbl_order where client_name like #{keyword} or client_phone like #{keyword}
     </select>
+    <select id="queryMonthsCount" resultType="com.lnho.easyorder.vo.OverviewVo">
+        SELECT
+        DATE_FORMAT(order_time, '%Y%m') countTime,
+        count(id) orderNum,
+        sum(area) area,
+        sum(money) money
+        FROM
+        tbl_order
+        WHERE
+        DATE_FORMAT(order_time, '%Y') = DATE_FORMAT(NOW(), '%Y')
+        GROUP BY
+        countTime
+        ORDER BY
+        order_time DESC
+    </select>
+    <select id="queryYearsCount" resultType="com.lnho.easyorder.vo.OverviewVo">
+        SELECT
+        DATE_FORMAT(order_time, '%Y') countTime,
+        count(id) orderNum,
+        sum(area) area,
+        sum(money) money
+        FROM
+        tbl_order
+        GROUP BY
+        countTime
+        ORDER BY
+        order_time DESC
+    </select>
 </mapper>
 
 

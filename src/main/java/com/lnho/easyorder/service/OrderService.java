@@ -52,4 +52,14 @@ public class OrderService extends BaseService<Order> {
         update(order);
         return true;
     }
+
+    public void updateOrderCount(Integer orderId, Double totalArea, Double totalMoney) {
+        Order order = get(orderId);
+        if (order== null) {
+            return;
+        }
+        order.setArea(totalArea);
+        order.setMoney(totalMoney);
+        update(order);
+    }
 }

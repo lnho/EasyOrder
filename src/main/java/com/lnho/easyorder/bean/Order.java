@@ -24,6 +24,26 @@ public class Order {
     private String clientPhone;
     @Column("order_time")
     private Date orderTime;
+    @Column("area")
+    private Double area;
+    @Column("money")
+    private Double money;
+
+    public Double getArea() {
+        return area;
+    }
+
+    public void setArea(Double area) {
+        this.area = area;
+    }
+
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
+    }
 
     public Integer getId() {
         return id;

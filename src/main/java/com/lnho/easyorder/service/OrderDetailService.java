@@ -27,6 +27,8 @@ public class OrderDetailService extends BaseService<OrderDetail> {
     private ProductService productService;
     @Autowired
     private ProjectService projectService;
+    @Autowired
+    private OrderService orderService;
 
     public List<ProjectVo> list(Integer orderId, boolean print) {
         List<ProjectVo> result = new ArrayList<ProjectVo>();
@@ -78,6 +80,7 @@ public class OrderDetailService extends BaseService<OrderDetail> {
             projectVo.setTitle("总　合　计");
         }
         result.add(projectVo);
+        orderService.updateOrderCount(orderId,totalArea,totalMoney);
         return result;
     }
 

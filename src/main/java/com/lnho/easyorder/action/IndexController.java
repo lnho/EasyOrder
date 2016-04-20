@@ -30,7 +30,7 @@ public class IndexController {
 
     @RequestMapping
     public String list() {
-        return "redirect:order.htm";
+        return "redirect:overview.htm";
     }
 
     @RequestMapping(value = "login", method = RequestMethod.GET)

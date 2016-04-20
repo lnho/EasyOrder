@@ -10,7 +10,7 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="/fed/css/font-awesome.min.css">
+    <link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Theme style -->
     <link rel="stylesheet" href="/fed/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/fed/css/skins/_all-skins.min.css">
@@ -51,6 +51,9 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">功能</li>
+                <li class="<#if leftMenu=='overview'>active</#if>">
+                    <a href="/overview.htm"><i class="fa fa-archive"></i> 概览</a>
+                </li>
                 <li class="treeview <#if leftMenu=='product1'||leftMenu=='product2'||leftMenu=='product3'>active</#if>"
                     id="scrollspy-components">
                     <a href="javascript::;"><i class="fa fa-gear"></i> 产品管理</a>
@@ -110,12 +113,10 @@
 
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="/fed/js/fastclick.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/fed/js/app.min.js"></script>
 <!-- SlimScroll 1.3.0 -->
-<script src="/fed/js/jquery.slimscroll.min.js"></script>
+<script src="//cdn.bootcss.com/jQuery-slimScroll/1.3.7/jquery.slimscroll.min.js"></script>
     <#nested>
 </body>
 </html>

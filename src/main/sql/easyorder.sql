@@ -16,25 +16,6 @@ Date: 2016-03-26 21:29:05
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for tbl_log
--- ----------------------------
-DROP TABLE IF EXISTS `tbl_log`;
-CREATE TABLE `tbl_log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` int(255) DEFAULT NULL,
-  `user_id` int(255) DEFAULT NULL,
-  `content` varchar(255) DEFAULT NULL,
-  `money` float(255,2) DEFAULT NULL,
-  `addtime` bigint(13) DEFAULT NULL,
-  `left_money` float(255,2) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tbl_log
--- ----------------------------
-
--- ----------------------------
 -- Table structure for tbl_order
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_order`;
@@ -44,14 +25,16 @@ CREATE TABLE `tbl_order` (
   `client_address` varchar(255) DEFAULT NULL,
   `client_phone` varchar(255) DEFAULT NULL,
   `order_time` datetime DEFAULT NULL,
+  `area` double(10,3) NOT NULL DEFAULT '0.000',
+  `money` double(10,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tbl_order
 -- ----------------------------
-INSERT INTO `tbl_order` VALUES ('61', '张三', '路6', '12345678910', '2015-12-01 00:00:00');
-INSERT INTO `tbl_order` VALUES ('62', '李四', '路3', '12345777777', '2016-03-06 00:00:00');
+INSERT INTO `tbl_order` VALUES ('61', '张三', '路6', '12345678910', '2015-12-01 00:00:00','0.000','0.00');
+INSERT INTO `tbl_order` VALUES ('62', '李四', '路3', '12345777777', '2016-03-06 00:00:00','0.000','0.00');
 
 -- ----------------------------
 -- Table structure for tbl_order_detail
@@ -59,19 +42,19 @@ INSERT INTO `tbl_order` VALUES ('62', '李四', '路3', '12345777777', '2016-03-
 DROP TABLE IF EXISTS `tbl_order_detail`;
 CREATE TABLE `tbl_order_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_id` int(11) DEFAULT NULL,
+  `order_id` int(255) DEFAULT NULL,
   `project_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
   `spec1` double DEFAULT NULL,
   `spec2` double DEFAULT NULL,
-  `num` int(11) DEFAULT NULL,
+  `num` double(10,4) DEFAULT NULL,
   `area` double(10,3) DEFAULT NULL,
   `price` double(10,2) DEFAULT NULL,
   `money` double(10,2) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   `type` tinyint(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=643 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=695 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tbl_order_detail
@@ -93,13 +76,13 @@ INSERT INTO `tbl_order_detail` VALUES ('642', '61', '13', '1', '1', '6', '9', '5
 DROP TABLE IF EXISTS `tbl_product`;
 CREATE TABLE `tbl_product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `type` tinyint(2) DEFAULT NULL,
-  `spec1` double(10,2) DEFAULT NULL,
-  `spec2` double(10,2) DEFAULT NULL,
-  `price` double(10,2) DEFAULT NULL,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `type` tinyint(2) NOT NULL,
+  `spec1` double(10,2) NOT NULL DEFAULT '0.00',
+  `spec2` double(10,2) NOT NULL DEFAULT '0.00',
+  `price` double(10,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tbl_product
@@ -107,9 +90,9 @@ CREATE TABLE `tbl_product` (
 INSERT INTO `tbl_product` VALUES ('1', '金典红玉灶面', '1', '30.00', '1.00', '1.23');
 INSERT INTO `tbl_product` VALUES ('3', '浅啡网门坎', '2', '1.00', '0.00', '16.00');
 INSERT INTO `tbl_product` VALUES ('8', '桃花红立板', '1', '2.00', '2.00', '38.00');
-INSERT INTO `tbl_product` VALUES ('11', '加工费2', '3', null, null, '3.00');
-INSERT INTO `tbl_product` VALUES ('12', '产品2', '1', null, null, '12.00');
-INSERT INTO `tbl_product` VALUES ('13', '加工费1', '3', null, null, '32.00');
+INSERT INTO `tbl_product` VALUES ('11', '加工费2', '3', '0.00', '0.00', '3.00');
+INSERT INTO `tbl_product` VALUES ('12', '产品2', '1', '0.00', '0.00', '12.00');
+INSERT INTO `tbl_product` VALUES ('13', '加工费1', '3', '0.00', '0.00', '32.00');
 
 -- ----------------------------
 -- Table structure for tbl_project
@@ -120,7 +103,7 @@ CREATE TABLE `tbl_project` (
   `order_id` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tbl_project
