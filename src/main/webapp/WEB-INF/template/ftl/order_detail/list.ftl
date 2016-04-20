@@ -14,6 +14,7 @@
         <button type="button" class="btn btn-primary" id="project">项目管理</button>
         <button type="button" class="btn btn-primary" id="add">添加条目</button>
         <button type="button" class="btn btn-primary" id="print"><i class="fa fa-print"></i> 打印</button>
+        <button type="button" class="btn btn-primary" id="attachment"><i class="fa fa-file-archive-o"></i> 附件管理</button>
     <#--<button type="button" class="btn btn-primary" id="export"><i class="fa fa-download"></i> 导出Excel</button>-->
     </div>
 </section>
@@ -24,11 +25,12 @@
                 <thead>
                 <tr>
                     <th rowspan="2" width="4%">项目号</th>
-                    <th rowspan="2" width="20%">名　　　称</th>
+                    <th rowspan="2">名　称</th>
+                    <th rowspan="2" width="20%">品　　　名</th>
                     <th colspan="4" width="30%">规　格　数　量</th>
                     <th rowspan="2" width="8%">单价(每㎡或m)</th>
                     <th rowspan="2" width="14%">金　额</th>
-                    <th rowspan="2">备　注</th>
+
                     <th rowspan="2" width="130px">操　作</th>
                 </tr>
                 <tr>
@@ -44,6 +46,7 @@
                         <#list orderDetails as item>
                         <tr>
                             <td class="text-center"><#if item_index=0>${project.no}</#if></td>
+                            <td>${item.remark}</td>
                             <td>${item.name}</td>
                             <td class="number"><#if item.type==1||item.type==2>${item.spec1}</#if></td>
                             <td class="number"><#if item.type==1||item.type==2>${item.spec2}</#if></td>
@@ -51,7 +54,7 @@
                             <td class="number"><#if item.type==1>${item.area}</#if></td>
                             <td class="number">${item.price}</td>
                             <td class="number">${item.money}</td>
-                            <td>${item.remark}</td>
+
                             <td>
                                 <a class="btn btn-primary" href="${ctx}order/detail/edit.htm?id=${item.id}">编辑</a>
                                 <a class="btn btn-primary" onclick="del(${item.id})">删除</a>
@@ -64,10 +67,10 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
                         <td class="project-count number">${project.area}</td>
                         <td></td>
                         <td class="project-count number">${project.money}</td>
-                        <td></td>
                         <td></td>
                     </tr>
                     </#list>
@@ -102,6 +105,9 @@
     });
     $("#project").click(function () {
         location = "${ctx}project.htm?orderId=${orderId}";
+    });
+    $("#attachment").click(function () {
+        location = "${ctx}attachment.htm?type=1&relativeId=${orderId}";
     });
 </script>
 </@inc.footer>
