@@ -33,6 +33,7 @@
                         <td>
                             <a class="btn btn-primary" href="${ctx}attachment/edit.htm?id=${item.id}">修改</a>
                             <a class="btn btn-primary" onclick="del(${item.id})">删除</a>
+                            <a class="btn btn-primary" onclick="down(${item.id})">下载附件</a>
                         </td>
                     </tr>
                     </#list>
@@ -59,5 +60,8 @@
     $("#add").click(function () {
         location = "${ctx}attachment/add.htm?type=${type}&relativeId=${relativeId}";
     });
+    function down(id) {
+        window.open("${ctx}attachment/download.htm?id="+id);
+    }
 </script>
 </@inc.footer>
