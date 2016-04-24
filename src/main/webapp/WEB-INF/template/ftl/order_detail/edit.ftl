@@ -44,7 +44,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">名称</label>
+                            <label for="remark" class="col-sm-2 control-label">名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="remark"
+                                       placeholder="名称" value="<#if data??>${data.remark}</#if>"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">品名</label>
                             <div class="col-sm-4">
                                 <select name="type" id="type" class="form-control"
                                         onchange="changeType(this.options.selectedIndex+1)">
@@ -80,13 +86,6 @@
                                 <input type="number" class="form-control" name="num"
                                        id="num-val" placeholder="数量(条片)" value="<#if data??>${data.num}<#else>1</#if>">
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="remark" class="col-sm-2 control-label">备注</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="remark"
-                                       placeholder="备注" value="<#if data??>${data.remark}</#if>"></div>
                         </div>
                     </div>
                     <div class="box-footer">
