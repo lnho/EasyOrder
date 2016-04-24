@@ -8,7 +8,7 @@ package com.lnho.easyorder.action;
  */
 
 import com.lnho.easyorder.bean.Attachment;
-import com.lnho.easyorder.commons.web.Response;
+import com.lnho.framework.web.Response;
 import com.lnho.easyorder.service.AttachmentService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -11,7 +11,7 @@ import com.lnho.easyorder.bean.OrderDetail;
 import com.lnho.easyorder.bean.Product;
 import com.lnho.easyorder.bean.ProductType;
 import com.lnho.easyorder.bean.Project;
-import com.lnho.easyorder.commons.web.Response;
+import com.lnho.framework.web.Response;
 import com.lnho.easyorder.conf.Global;
 import com.lnho.easyorder.service.OrderDetailService;
 import com.lnho.easyorder.service.OrderService;

@@ -7,7 +7,7 @@ package com.lnho.easyorder.action;
  * @date 14-7-23 上午10:34
  */
 
-import com.lnho.easyorder.commons.mybatis.util.StringUtil;
+import com.lnho.framework.mybatis.util.StringUtil;
 import com.lnho.easyorder.conf.Global;
 import com.lnho.easyorder.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

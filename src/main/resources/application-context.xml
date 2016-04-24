@@ -69,10 +69,10 @@
         <property name="checkoutTimeout" value="1000"/>
     </bean>
 
-    <bean id="applicationContextUtil" class="com.lnho.easyorder.commons.context.ApplicationContextUtil"></bean>
+    <bean id="applicationContextUtil" class="com.lnho.framework.context.ApplicationContextUtil"></bean>
 
 
-    <bean id="webContext" class="com.lnho.easyorder.commons.context.WebContext"/>
+    <bean id="webContext" class="com.lnho.framework.context.WebContext"/>
 
     <!-- 定义事务管理器（声明式的事务） -->
     <bean id="transactionManager"
@@ -148,8 +148,8 @@
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
             <set>
-                <bean class="com.lnho.easyorder.commons.springmvc.DateConverter"/>
-                <bean class="com.lnho.easyorder.commons.springmvc.StringConverter"/>
+                <bean class="com.lnho.framework.springmvc.DateConverter"/>
+                <bean class="com.lnho.framework.springmvc.StringConverter"/>
             </set>
         </property>
     </bean>
@@ -158,7 +158,7 @@
           class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
             <set>
-                <bean class="com.lnho.easyorder.commons.springmvc.DateConverter"/>
+                <bean class="com.lnho.framework.springmvc.DateConverter"/>
             </set>
         </property>
     </bean>
@@ -189,7 +189,7 @@
         <property name="contentType" value="textml; charset=UTF-8"/>
         <property name="exposeSessionAttributes" value="true"/>
         <property name="exposeSpringMacroHelpers" value="true"/>
-        <property name="viewClass" value="com.lnho.easyorder.commons.springmvc.WebFreeMarkerView"/>
+        <property name="viewClass" value="com.lnho.easyorder.common.WebFreeMarkerView"/>
     </bean>
     <bean class="com.lnho.easyorder.conf.Global">
         <property name="adminUser" value="${admin.user}"></property>

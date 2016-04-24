@@ -8,7 +8,7 @@ package com.lnho.easyorder.action;
  */
 
 import com.lnho.easyorder.bean.Order;
-import com.lnho.easyorder.commons.web.Response;
+import com.lnho.framework.web.Response;
 import com.lnho.easyorder.service.OrderService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

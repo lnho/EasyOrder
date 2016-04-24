@@ -1,7 +1,7 @@
 package com.lnho.easyorder.dao;
 
 import com.lnho.easyorder.bean.Order;
-import com.lnho.easyorder.commons.mybatis.dao.BaseDAO;
+import com.lnho.framework.mybatis.dao.BaseDAO;
 import com.lnho.easyorder.vo.OverviewVo;
 
 import java.util.List;

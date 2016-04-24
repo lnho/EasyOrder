@@ -2,7 +2,7 @@ package com.lnho.easyorder.service;
 
 import com.lnho.easyorder.bean.Order;
 import com.lnho.easyorder.bean.Project;
-import com.lnho.easyorder.commons.mybatis.service.BaseService;
+import com.lnho.framework.mybatis.service.BaseService;
 import com.lnho.easyorder.dao.OrderDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

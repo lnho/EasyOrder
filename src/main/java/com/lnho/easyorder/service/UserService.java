@@ -1,7 +1,7 @@
 package com.lnho.easyorder.service;
 
 import com.lnho.easyorder.bean.User;
-import com.lnho.easyorder.commons.mybatis.service.BaseService;
+import com.lnho.framework.mybatis.service.BaseService;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;

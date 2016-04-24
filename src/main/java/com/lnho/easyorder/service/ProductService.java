@@ -1,8 +1,8 @@
 package com.lnho.easyorder.service;
 
 import com.lnho.easyorder.bean.Product;
-import com.lnho.easyorder.commons.mybatis.bean.Query;
-import com.lnho.easyorder.commons.mybatis.service.BaseService;
+import com.lnho.framework.mybatis.bean.Query;
+import com.lnho.framework.mybatis.service.BaseService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

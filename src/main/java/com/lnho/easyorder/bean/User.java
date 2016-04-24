@@ -1,9 +1,9 @@
 package com.lnho.easyorder.bean;
 
-import com.lnho.easyorder.commons.mybatis.annotation.Column;
-import com.lnho.easyorder.commons.mybatis.annotation.Id;
-import com.lnho.easyorder.commons.mybatis.annotation.Table;
-import com.lnho.easyorder.commons.mybatis.annotation.UnColumn;
+import com.lnho.framework.mybatis.annotation.Column;
+import com.lnho.framework.mybatis.annotation.Id;
+import com.lnho.framework.mybatis.annotation.Table;
+import com.lnho.framework.mybatis.annotation.UnColumn;
 
 /**
  * com.lnho.easyorder.bean

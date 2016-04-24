@@ -1,7 +1,7 @@
 package com.lnho.easyorder.dao;
 
 import com.lnho.easyorder.bean.Project;
-import com.lnho.easyorder.commons.mybatis.dao.BaseDAO;
+import com.lnho.framework.mybatis.dao.BaseDAO;
 
 /**
  * com.lnho.easyorder.dao
