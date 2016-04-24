@@ -7,16 +7,11 @@ package com.lnho.easyorder.action;
  * @date 14-7-23 上午10:34
  */
 
-import com.lnho.easyorder.bean.OrderDetail;
-import com.lnho.easyorder.bean.Product;
-import com.lnho.easyorder.bean.ProductType;
-import com.lnho.easyorder.bean.Project;
+import com.lnho.easyorder.bean.*;
+import com.lnho.easyorder.common.conf.Define;
+import com.lnho.easyorder.service.*;
 import com.lnho.framework.web.Response;
-import com.lnho.easyorder.conf.Global;
-import com.lnho.easyorder.service.OrderDetailService;
-import com.lnho.easyorder.service.OrderService;
-import com.lnho.easyorder.service.ProductService;
-import com.lnho.easyorder.service.ProjectService;
+import com.lnho.easyorder.common.conf.Global;
 import com.lnho.easyorder.vo.ProjectVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +33,8 @@ public class OrderDetailController {
     @Autowired
     private OrderService orderService;
     @Autowired
+    private AttachmentService attachmentService;
+    @Autowired
     private Global global;
 
     @RequestMapping()
@@ -46,6 +43,8 @@ public class OrderDetailController {
         model.addAttribute("data", list);
         model.addAttribute("orderId", orderId);
         model.addAttribute("leftMenu", "order");
+        List<Attachment> attachments = attachmentService.getAttachmentImageList(Define.ATTACHMENT_TYPE_ORDER, orderId);
+        model.addAttribute("attachments", attachments);
         return "order_detail/list";
     }
 
@@ -57,6 +56,8 @@ public class OrderDetailController {
         model.addAttribute("leftMenu", "order");
         model.addAttribute("order", orderService.get(orderId));
         model.addAttribute("printTitle", global.getPrintTitle());
+        List<Attachment> attachments = attachmentService.getAttachmentImageList(Define.ATTACHMENT_TYPE_ORDER, orderId);
+        model.addAttribute("attachments", attachments);
         return "order_detail/print";
     }
 

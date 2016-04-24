@@ -1,7 +1,7 @@
-package com.lnho.easyorder.common;
+package com.lnho.easyorder.common.springmvc;
 
 import com.lnho.framework.context.ApplicationContextUtil;
-import com.lnho.easyorder.conf.Global;
+import com.lnho.easyorder.common.conf.Global;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
 
 import javax.servlet.http.HttpServletRequest;

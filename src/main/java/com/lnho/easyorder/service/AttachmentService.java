@@ -1,17 +1,16 @@
 package com.lnho.easyorder.service;
 
 import com.lnho.easyorder.bean.Attachment;
-import com.lnho.easyorder.bean.OrderDetail;
-import com.lnho.easyorder.bean.Attachment;
+import com.lnho.easyorder.common.conf.Define;
+import com.lnho.easyorder.common.utils.FileUtil;
 import com.lnho.framework.mybatis.bean.Query;
 import com.lnho.framework.mybatis.service.BaseService;
-import org.jasig.cas.client.util.HttpServletRequestWrapperFilter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,6 +30,18 @@ public class AttachmentService extends BaseService<Attachment> {
         return this.findByQuery(query);
     }
 
+    public List<Attachment> getAttachmentImageList(Integer type, Integer relativeId) {
+        List<Attachment> list = list(type, relativeId);
+        List<Attachment> result = new ArrayList<Attachment>();
+        for (Attachment attachment : list) {
+            if (FileUtil.checkFileIsImage(attachment.getSavePath())) {
+                attachment.setSavePath(Define.getAttachmentUrl(attachment.getSavePath()));
+                result.add(attachment);
+            }
+        }
+        return result;
+    }
+
     public boolean deleteAttachment(Integer id) {
         Attachment attachment = get(id);
         if (attachment == null) {
@@ -43,9 +54,9 @@ public class AttachmentService extends BaseService<Attachment> {
     public boolean createAttachment(Attachment attachment, MultipartFile file, HttpServletRequest request) {
         try {
             // 文件保存路径
-            String prefix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-            String savePath = UUID.randomUUID().toString() + prefix;
-            String filePath = request.getSession().getServletContext().getRealPath("/") + "/upload/" + savePath;
+            String suffix = FileUtil.getFileSuffix(file.getOriginalFilename());
+            String savePath = UUID.randomUUID().toString() + "." + suffix;
+            String filePath = request.getSession().getServletContext().getRealPath("/") + Define.getAttachmentUrl(savePath);
             // 转存文件
             file.transferTo(new File(filePath));
             attachment.setSavePath(savePath);

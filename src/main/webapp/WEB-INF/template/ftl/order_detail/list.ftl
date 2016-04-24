@@ -76,6 +76,28 @@
                     </#list>
                 </tbody>
             </table>
+
+        </div>
+    </div>
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">订单附件</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="attachments">
+                <#list attachments as item>
+                    <h4 class="page-header">
+                        <i class="fa fa-file"></i> ${item.fileName}
+                        <#--<small class="pull-right">Date: 2/10/2014</small>-->
+                    </h4>
+                    <img src="${item.savePath}" class="attachment-img">
+                </#list>
+            </div>
         </div>
     </div>
 </section>

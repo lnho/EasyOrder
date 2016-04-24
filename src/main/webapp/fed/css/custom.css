@@ -81,3 +81,8 @@
     padding: 4px;
     font-size: 13px;
 }
+
+.attachment-img{
+    max-width:100%;
+    margin-bottom: 10px;
+}

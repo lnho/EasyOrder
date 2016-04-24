@@ -63,6 +63,11 @@
             </#list>
             </tbody>
         </table>
+        <div class="attachments">
+            <#list attachments as item>
+                <img src="${item.savePath}" class="attachment-img">
+            </#list>
+        </div>
     </section>
 </div>
 </body>

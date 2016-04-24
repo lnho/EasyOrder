@@ -1,7 +1,7 @@
-package com.lnho.easyorder.conf;
+package com.lnho.easyorder.common.conf;
 
 /**
- * com.lnho.easyorder.conf
+ * com.lnho.easyorder.common.conf
  *
  * @author lnho
  * @date 15-3-24 上午9:55

@@ -189,9 +189,9 @@
         <property name="contentType" value="textml; charset=UTF-8"/>
         <property name="exposeSessionAttributes" value="true"/>
         <property name="exposeSpringMacroHelpers" value="true"/>
-        <property name="viewClass" value="com.lnho.easyorder.common.WebFreeMarkerView"/>
+        <property name="viewClass" value="com.lnho.easyorder.common.springmvc.WebFreeMarkerView"/>
     </bean>
-    <bean class="com.lnho.easyorder.conf.Global">
+    <bean class="com.lnho.easyorder.common.conf.Global">
         <property name="adminUser" value="${admin.user}"></property>
         <property name="adminPass" value="${admin.pass}"></property>
         <property name="siteName" value="${site.name}"></property>

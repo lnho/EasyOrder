@@ -8,6 +8,8 @@ package com.lnho.easyorder.action;
  */
 
 import com.lnho.easyorder.bean.Attachment;
+import com.lnho.easyorder.common.conf.Define;
+import com.lnho.easyorder.common.utils.FileUtil;
 import com.lnho.framework.web.Response;
 import com.lnho.easyorder.service.AttachmentService;
 import org.apache.commons.lang.StringUtils;
@@ -106,34 +108,18 @@ public class AttachmentController {
     }
 
     @RequestMapping("download")
-    public String download(Integer id, HttpServletRequest request, HttpServletResponse response) {
+    public void download(Integer id, HttpServletRequest request, HttpServletResponse response) {
         if (id == null) {
-            return null;
+            return;
         }
         Attachment attachment = attachmentService.get(id);
         String fileName = attachment.getSavePath();
-        response.setCharacterEncoding("utf-8");
-        response.setContentType("multipart/form-data");
-        response.setHeader("Content-Disposition", "attachment;fileName=" + fileName);
         try {
-            String filePath = request.getSession().getServletContext().getRealPath("/") + "/upload/" + attachment.getSavePath();
-            InputStream inputStream = new FileInputStream(new File(filePath));
-            OutputStream os = response.getOutputStream();
-            byte[] b = new byte[2048];
-            int length;
-            while ((length = inputStream.read(b)) > 0) {
-                os.write(b, 0, length);
-            }
-            // 这里主要关闭。
-            os.close();
-            inputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            FileUtil.getFileDownload(request, response, fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //  返回值要注意，要不然就出现下面这句错误！
-        //java+getOutputStream() has already been called for this response
-        return null;
     }
+
+
 }
