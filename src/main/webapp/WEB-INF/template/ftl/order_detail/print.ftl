@@ -65,6 +65,7 @@
         </table>
         <div class="attachments">
             <#list attachments as item>
+            ${item.fileName}:
                 <img src="${item.savePath}" class="attachment-img">
             </#list>
         </div>
