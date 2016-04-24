@@ -78,6 +78,13 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.lnho</groupId>
+            <artifactId>easy-framework</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/easy-framework-1.0.0.jar</systemPath>
+        </dependency>
         <!-- common lib -->
         <dependency>
             <groupId>commons-httpclient</groupId>
