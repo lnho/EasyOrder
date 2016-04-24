@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : 本地MySQL
 Source Server Version : 50528
 Source Host           : localhost:3306
 Source Database       : easyorder
@@ -10,10 +10,28 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2016-03-26 21:29:05
+Date: 2016-04-24 15:14:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for tbl_attachment
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_attachment`;
+CREATE TABLE `tbl_attachment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` int(11) DEFAULT NULL,
+  `relative_id` int(11) DEFAULT NULL,
+  `file_name` varchar(255) DEFAULT NULL,
+  `save_path` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tbl_attachment
+-- ----------------------------
+INSERT INTO `tbl_attachment` VALUES ('3', '1', '61', '附件2', 'd4ca1310-4520-4385-a3c1-3c7bef1156f2.jpg');
 
 -- ----------------------------
 -- Table structure for tbl_order
@@ -33,8 +51,8 @@ CREATE TABLE `tbl_order` (
 -- ----------------------------
 -- Records of tbl_order
 -- ----------------------------
-INSERT INTO `tbl_order` VALUES ('61', '张三', '路6', '12345678910', '2015-12-01 00:00:00','0.000','0.00');
-INSERT INTO `tbl_order` VALUES ('62', '李四', '路3', '12345777777', '2016-03-06 00:00:00','0.000','0.00');
+INSERT INTO `tbl_order` VALUES ('61', '张三', '路6', '12345678910', '2015-12-01 00:00:00', '0.000', '527.42');
+INSERT INTO `tbl_order` VALUES ('62', '李四', '路3', '12345777777', '2016-03-06 00:00:00', '0.000', '0.00');
 
 -- ----------------------------
 -- Table structure for tbl_order_detail
@@ -59,16 +77,16 @@ CREATE TABLE `tbl_order_detail` (
 -- ----------------------------
 -- Records of tbl_order_detail
 -- ----------------------------
-INSERT INTO `tbl_order_detail` VALUES ('620', '61', '13', '3', '0', '0', '5', '0.000', '16.00', '80.00', '2', '1');
-INSERT INTO `tbl_order_detail` VALUES ('621', '61', '12', '1', '0', '0', '0', '0.000', '35.00', '0.00', '322', '2');
-INSERT INTO `tbl_order_detail` VALUES ('630', '61', '12', '1', '1', '0', '5', '0.000', '15.00', '75.00', '', '1');
-INSERT INTO `tbl_order_detail` VALUES ('631', '61', '12', '1', '30', '1', '0', '2.000', '1.20', '72.00', '', '0');
-INSERT INTO `tbl_order_detail` VALUES ('633', '61', '12', '1', '0', '0', '0', '0.000', '1.20', '0.00', '', '2');
-INSERT INTO `tbl_order_detail` VALUES ('636', '61', '12', '1', '2', '2', '0', '10.000', '2.00', '80.00', '3', '0');
-INSERT INTO `tbl_order_detail` VALUES ('637', '61', '12', '1', '2', '0', '23', '0.000', '2.00', '92.00', '', '1');
-INSERT INTO `tbl_order_detail` VALUES ('640', '61', '13', '1', '0', '0', '2', '0.000', '1.00', '2.00', '', '2');
-INSERT INTO `tbl_order_detail` VALUES ('641', '61', '13', '11', '0', '0', '20', '0.000', '3.00', '60.00', '3', '1');
-INSERT INTO `tbl_order_detail` VALUES ('642', '61', '13', '1', '1', '6', '9', '54.000', '1.23', '66.42', '333', '0');
+INSERT INTO `tbl_order_detail` VALUES ('620', '61', '13', '3', '0', '0', '5.0000', '0.000', '16.00', '80.00', '2', '1');
+INSERT INTO `tbl_order_detail` VALUES ('621', '61', '12', '1', '0', '0', '0.0000', '0.000', '35.00', '0.00', '322', '2');
+INSERT INTO `tbl_order_detail` VALUES ('630', '61', '12', '1', '1', '0', '5.0000', '0.000', '15.00', '75.00', '', '1');
+INSERT INTO `tbl_order_detail` VALUES ('631', '61', '12', '1', '30', '1', '0.0000', '2.000', '1.20', '72.00', '', '0');
+INSERT INTO `tbl_order_detail` VALUES ('633', '61', '12', '1', '0', '0', '0.0000', '0.000', '1.20', '0.00', '', '2');
+INSERT INTO `tbl_order_detail` VALUES ('636', '61', '12', '1', '2', '2', '0.0000', '10.000', '2.00', '80.00', '3', '0');
+INSERT INTO `tbl_order_detail` VALUES ('637', '61', '12', '1', '2', '0', '23.0000', '0.000', '2.00', '92.00', '', '1');
+INSERT INTO `tbl_order_detail` VALUES ('640', '61', '13', '1', '0', '0', '2.0000', '0.000', '1.00', '2.00', '', '2');
+INSERT INTO `tbl_order_detail` VALUES ('641', '61', '13', '11', '0', '0', '20.0000', '0.000', '3.00', '60.00', '3', '1');
+INSERT INTO `tbl_order_detail` VALUES ('642', '61', '13', '1', '1', '6', '9.0000', '54.000', '1.23', '66.42', '333', '0');
 
 -- ----------------------------
 -- Table structure for tbl_product

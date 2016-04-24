@@ -116,7 +116,7 @@ public class AttachmentController {
         response.setContentType("multipart/form-data");
         response.setHeader("Content-Disposition", "attachment;fileName=" + fileName);
         try {
-            String filePath = request.getSession().getServletContext().getRealPath("/") + "upload/" + attachment.getSavePath();
+            String filePath = request.getSession().getServletContext().getRealPath("/") + "/upload/" + attachment.getSavePath();
             InputStream inputStream = new FileInputStream(new File(filePath));
             OutputStream os = response.getOutputStream();
             byte[] b = new byte[2048];
