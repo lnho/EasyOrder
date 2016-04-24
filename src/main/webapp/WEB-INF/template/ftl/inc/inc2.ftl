@@ -52,7 +52,7 @@
             <ul class="sidebar-menu">
                 <li class="header">功能</li>
                 <li class="<#if leftMenu=='overview'>active</#if>">
-                    <a href="/overview.htm"><i class="fa fa-archive"></i> 概览</a>
+                    <a href="/overview.htm"><i class="fa fa-line-chart"></i> 概览</a>
                 </li>
                 <li class="treeview <#if leftMenu=='product1'||leftMenu=='product2'||leftMenu=='product3'>active</#if>"
                     id="scrollspy-components">
